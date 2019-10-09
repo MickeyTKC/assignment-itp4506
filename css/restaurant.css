@@ -1,0 +1,24 @@
+.list-group .list-group-item {
+    cursor: pointer;
+}
+
+.list-group .list-group-item:hover {
+    background-color: #BBDEFB;
+}
+
+.list-group .active {
+    cursor: default;
+}
+
+.list-group .active:hover {
+    cursor: default;
+    background-color: #007bff;
+}
+
+.coming-soon {
+    height: 78.5vh;
+}
+
+.coming-soon img {
+    width: 100%;
+}
