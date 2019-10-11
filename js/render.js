@@ -1,7 +1,22 @@
-function addEl(t,e){
-    const tar = [...document.querySelectorAll(t)];
-    for(i=0;i<tar.length;i++){
-        tar[i].innerHTML+=e;
-    }
-}
+// import jQuery before run that script 
+const render = {
+    site: {
+        load: () => {
+            $("#nav").load("components/nav.html");
+            $("#header").load("components/header.html");
+            $("#footer").load("components/footer.html");
+        }
+    },
+    button: {
 
+    },
+    listGroup: {
+
+    },
+    card: {
+
+    },
+    slider: {
+
+    },
+};
