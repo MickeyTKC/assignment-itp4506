@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1001",
+        "name": "XXX Restaurant",
+        "introduction": "The Best Restaurant in the World",
+        "branch": [
+            {
+                "location": {
+                    "string": "Earth",
+                    "map": {
+                        "link": "www.google.com",
+                        "source": "www.google.com/?s=google+map"
+                    }
+                }
+            }
+        ],
+        "menu": [
+            {
+                "name": "Poo",
+                "type": "Food",
+                "takeaway": false,
+                "date": {
+                    "start": "13/10/2019",
+                    "end": "14/10/2019"
+                }
+            },
+            {
+                "name": "Pee",
+                "type": "String",
+                "takeaway": true,
+                "date": {
+                    "start": "13/10/2019",
+                    "end": "14/10/2019"
+                }
+            }
+        ]
+    }
+]
