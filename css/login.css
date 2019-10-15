@@ -1,0 +1,22 @@
+h2,
+label {
+    color: grey;
+    font-family: monospace;
+}
+
+label {
+    font-size: 16px;
+}
+
+a {
+    font-size: 13px;
+}
+
+#signup {
+    margin-left: 90px;
+    margin-right: 20px;
+}
+
+#forgot {
+    margin-left: 20px;
+}
