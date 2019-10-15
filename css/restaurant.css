@@ -8,6 +8,7 @@
 
 .list-group .active {
     cursor: default;
+    color: white;
 }
 
 .list-group .active:hover {
