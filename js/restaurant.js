@@ -1,35 +1,21 @@
-var infobtn = infobtn || document.getElementById("infobtn");
-var info = info || document.getElementById("info");
-var meunsbtn = meunsbtn || document.getElementById("meunsbtn");
-var meuns = meuns || document.getElementById("meuns");
-var branchesbtn = branchesbtn || document.getElementById("branchesbtn");
-var branches = branches || document.getElementById("branches");
-
-infobtn.addEventListener("click", function() {
-    info.style.display = "block";
-    meuns.style.display = "none";
-    branches.style.display = "none";
-});
-
-meunsbtn.addEventListener("click", function() {
-    info.style.display = "none";
-    meuns.style.display = "block";
-    branches.style.display = "none";
-});
-
-branchesbtn.addEventListener("click", function() {
-    info.style.display = "none";
-    meuns.style.display = "none";
-    branches.style.display = "block";
-});
-
-const items = $(".list-group-item");
-const views = $(".view");
+let items = $(".list-group-item");
+let views = $(".view");
 
 items.click(function() {
     items.removeClass("active btn-primary");
+    views.fadeTo("fast", 0);
+    views.css("display", "none");
     $(this).addClass("active btn-primary");
-    console.log($(this));
+    for (var i = 0; i < items.length; i++) {
+        console.log(this.name)
+        console.log(views[i].id);
+        if (this.name == (views[i].id)) {
+            $(views[i]).css("display", "block");
+            $(views[i]).fadeTo("slow", 1);
+
+            break;
+        }
+    }
 });
 
 $(".view").css("display", "none");

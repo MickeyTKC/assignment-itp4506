@@ -1,30 +1,194 @@
 [{
-    "id": "1001",
-    "name": "XXX Restaurant",
-    "introduction": "The Best Restaurant in the World",
-    "branch": [{
-        "location": {
-            "string": "Earth",
-            "map": "www.google.com"
-        }
-    }],
-    "menu": [{
-            "name": "Poo",
-            "type": "Food",
-            "takeaway": false,
-            "date": {
-                "start": "13/10/2019",
-                "end": "14/10/2019"
+        "id": "1001",
+        "name": "ItaMoMo",
+        "foodType": "Italian",
+        "introduction": "",
+        "branch": [{
+                "location": {
+                    "tel": "35802832",
+                    "locat": "Sha Ti",
+                    "string": "Shop 102, 1/F, Yu Chui Shopping Centre, 2 Ngau Pei Sha Street, Sha Tin",
+                    "howToGo": "3-min walk from Exit D, City One MTR Station",
+                    "map": "https://goo.gl/maps/DDGgEu2WRyYPAFDdA"
+                }
+            },
+            {
+                "location": {
+                    "tel": "22677990",
+                    "locat": "Wong Tai Sin",
+                    "string": "Shop 130, L1/F, Temple Mall South, 103 Ching Tak Street, Wong Tai Sin",
+                    "howToGo": "Exit D3, Wong Tai Sin MTR Station",
+                    "map": "https://goo.gl/maps/JXGiMdDtm7KAhzZo7"
+                }
+            },
+            {
+                "location": {
+                    "tel": "27096811",
+                    "locat": "Lam Tin",
+                    "string": "Shop 235, 2/F, Kai Tin Shopping Centre, 50 Kai Tin Road, Lam Tin",
+                    "howToGo": "4-min walk from Exit A, Lam Tin MTR Station",
+                    "map": "https://goo.gl/maps/VpCAEghhCc9UV9NK9"
+                }
             }
-        },
-        {
-            "name": "Pee",
-            "type": "String",
-            "takeaway": true,
-            "date": {
-                "start": "13/10/2019",
-                "end": "14/10/2019"
+        ],
+        "menu": [{
+                "name": "Certified Angus Beef",
+                "type": "Special",
+                "takeaway": false,
+                "date": {
+                    "start": "1/2/2019",
+                    "end": "31/5/2019"
+                }
+            },
+            {
+                "name": "BBQ Boneless Chicken with Cheese",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/7/2019",
+                    "end": "10/9/2019"
+                }
+            },
+            {
+                "name": "England Style Crispy Fish Filet",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/6/2019",
+                    "end": "30/9/2019"
+                }
+            },
+            {
+                "name": "Japanese Style Cutlet Pork Chop",
+                "type": "Seasonal",
+                "takeaway": false,
+                "date": {
+                    "start": "1/10/2019",
+                    "end": "1/1/2019"
+                }
             }
-        }
-    ]
-}]
+        ]
+    },
+    {
+        "id": "1002",
+        "name": "Espuma",
+        "foodType": "Spanish/International/Dessert/Coffee Shop/Upper-floor Cafe",
+        "introduction": "Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.",
+        "branch": [{
+            "location": {
+                "tel": "27392080",
+                "locat": "Tsim Sha Tsui",
+                "string": "2/F, H8, 8 Hau Fook Street, Tsim Sha Tsui",
+                "howToGo": "4-min walk from Exit B2, Tsim Sha Tsui / East Tsim Sha Tsui MTR Station",
+                "map": "https://goo.gl/maps/TYtacyDSCRXYZ5eY7"
+            }
+        }],
+        "menu": [{
+                "name": "Lime Scone with Fresh Cream and Honey Jam",
+                "type": "Special",
+                "takeaway": false,
+                "date": {
+                    "start": "1/2/2019",
+                    "end": "31/5/2019"
+                }
+            },
+            {
+                "name": "Mini Cheese Beef Burger",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/7/2019",
+                    "end": "10/9/2019"
+                }
+            },
+            {
+                "name": "Avocado Prawn Toast Roll",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/6/2019",
+                    "end": "30/9/2019"
+                }
+            },
+            {
+                "name": "Sweet Basil Fresh Fruit Pudding",
+                "type": "Seasonal",
+                "takeaway": false,
+                "date": {
+                    "start": "1/10/2019",
+                    "end": "1/1/2019"
+                }
+            },
+            {
+                "name": "Fresh Cherry Cupcake",
+                "type": "Seasonal",
+                "takeaway": true,
+                "date": {
+                    "start": "1/10/2019",
+                    "end": "1/1/2019"
+                }
+            }
+        ]
+    },
+    {
+        "id": "1003",
+        "name": "PAN de PAIN Pancakes & Sweets",
+        "foodType": "Japanese/Dessert/Coffee Shop",
+        "introduction": "PAN de PAIN Pancakes & Sweets is a popular dessert restaurant from Okinawa that serves Japanese pancakes and garland coffee. One of their most popular dishes is the Strawberry Pancake with fresh strawberries, cream and strawberry ice cream.",
+        "branch": [{
+            "location": {
+                "tel": "25761968",
+                "locat": "Tsim Sha Tsui",
+                "string": "Shop B111B & B111C, B1/F, K11 Art Mall, 18 Hanoi Road, Tsim Sha Tsui",
+                "howToGo": "2-min walk from Exit D2, Tsim Sha Tsui / East Tsim Sha Tsui MTR Station",
+                "map": "https://goo.gl/maps/1SpqfHoQrbMcKFQZ6"
+            }
+        }],
+        "menu": [{
+                "name": "Original Soufflé",
+                "type": "Special",
+                "takeaway": false,
+                "date": {
+                    "start": "1/2/2019",
+                    "end": "31/5/2019"
+                }
+            },
+            {
+                "name": "Uji Matcha Soufflé",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/7/2019",
+                    "end": "10/9/2019"
+                }
+            },
+            {
+                "name": "Caramel Apple Soufflé",
+                "type": "Temporary",
+                "takeaway": true,
+                "date": {
+                    "start": "1/6/2019",
+                    "end": "30/9/2019"
+                }
+            },
+            {
+                "name": "Berry Cheesecake Soufflé",
+                "type": "Seasonal",
+                "takeaway": false,
+                "date": {
+                    "start": "1/10/2019",
+                    "end": "1/1/2019"
+                }
+            },
+            {
+                "name": "Original PAN de PAIN",
+                "type": "Seasonal",
+                "takeaway": true,
+                "date": {
+                    "start": "1/10/2019",
+                    "end": "1/1/2019"
+                }
+            }
+        ]
+    }
+]
