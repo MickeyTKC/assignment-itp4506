@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Restaurant</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+    <link href="css/operation.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div id="header"></div>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="my-4">Espuma <label class="labelUserType">- OPERATOR</label></h1>
+                <div class="list-group">
+                    <a href="#info" name="info" class="list-group-item">Information</a>
+                    <a href="#meuns" name="meuns" class="list-group-item">Update Meuns</a>
+                    <a href="#branches" name="branches" class="list-group-item">Branches</a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+                <div id="info" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            About Restaurant
+                        </div>
+                        <div class="card-body">
+                            <div class="form-label-group">
+                                <label for="name" class="inputlbl">Name</label>
+                                <input type="text" id="name" class="form-control" required autofocus />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="foodType" class="inputlbl">Type</label>
+                                <input type="text" id="foodType" class="form-control" required />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="introduction" class="inputlbl">Introduction</label>
+                                <textarea class="form-control" id="introduction" rows="4"></textarea>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="meuns" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Update Meun
+                        </div>
+                        <div class="card-body">
+                            <div class="form-label-group">
+                                <label for="name" class="inputlbl">Name</label>
+                                <input type="text" id="name" class="form-control" required autofocus />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="foodType" class="inputlbl">Type</label>
+                                <input type="text" id="foodType" class="form-control" required />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="introduction" class="inputlbl">Introduction</label>
+                                <textarea class="form-control" id="introduction" rows="4"></textarea>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="branches" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Branches
+                        </div>
+                        <div class="card-body">
+                            <div class="form-label-group">
+                                <label for="name" class="inputlbl">Name</label>
+                                <input type="text" id="name" class="form-control" required autofocus />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="foodType" class="inputlbl">Type</label>
+                                <input type="text" id="foodType" class="form-control" required />
+                            </div>
+                            <br />
+                            <div class="form-label-group">
+                                <label for="introduction" class="inputlbl">Introduction</label>
+                                <textarea class="form-control" id="introduction" rows="4"></textarea>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#header").load("components/nav.html");
+            $("#footer").load("components/footer.html");
+        })
+    </script>
+</body>
+
+</html>

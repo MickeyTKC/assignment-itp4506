@@ -1,0 +1,52 @@
+@import url("restaurant.css");
+.labelUserType {
+    font-size: 12px;
+    color: grey;
+}
+
+.inputlbl {
+    font-size: 14px;
+    color: grey;
+}
+
+.card-header {
+    font-size: 24px;
+}
+
+#info .card-header {
+    background-color: #FFE082;
+    color: #935116;
+}
+
+#info .card {
+    border: 1px solid #FFE082;
+    box-shadow: 2px 2px 6px -1px #FFE082;
+}
+
+#meuns .card-header {
+    background-color: #FFCC80;
+    color: #873600;
+}
+
+#meuns .card {
+    border: 1px solid #FFCC80;
+    box-shadow: 2px 2px 6px -1px #FFCC80;
+}
+
+#branches .card-header {
+    background-color: #FFAB91;
+    color: #6E2C00;
+}
+
+#branches .card {
+    border: 1px solid #FFAB91;
+    box-shadow: 2px 2px 6px -1px #FFAB91;
+}
+
+.views:first-child {
+    padding-top: 75px;
+}
+
+.views {
+    padding-top: 40px;
+}
