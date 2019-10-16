@@ -19,10 +19,12 @@
 }
 
 .btn-login {
+    color: #fff !important;
     font-size: 0.9rem;
     letter-spacing: 0.05rem;
     padding: 0.75rem 1rem;
     border-radius: 2rem;
+    cursor: pointer;
 }
 
 .form-label-group {
@@ -94,11 +96,11 @@
     .form-label-group>label {
         display: none;
     }
-
     .form-label-group input::-ms-input-placeholder {
         color: #777;
     }
 }
+
 
 /* Fallback for IE
 -------------------------------------------------- */
@@ -108,7 +110,6 @@
     .form-label-group>label {
         display: none;
     }
-
     .form-label-group input:-ms-input-placeholder {
         color: #777;
     }
