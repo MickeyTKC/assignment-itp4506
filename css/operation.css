@@ -50,3 +50,16 @@
 .views {
     padding-top: 40px;
 }
+
+.meuntable-th {
+    color: #6E2C00;
+}
+
+#takeAwaylbl {
+    font-size: 18px;
+    color: black;
+}
+
+.form-label-group {
+    overflow: auto;
+}

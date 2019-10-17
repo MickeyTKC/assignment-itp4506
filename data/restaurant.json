@@ -51,7 +51,7 @@
             },
             {
                 "name": "England Style Crispy Fish Filet",
-                "type": "Temporary",
+                "type": "Normal",
                 "takeaway": true,
                 "date": {
                     "start": "1/6/2019",
@@ -121,7 +121,7 @@
             },
             {
                 "name": "Fresh Cherry Cupcake",
-                "type": "Seasonal",
+                "type": "Normal",
                 "takeaway": true,
                 "date": {
                     "start": "1/10/2019",
@@ -155,7 +155,7 @@
             },
             {
                 "name": "Uji Matcha Soufflé",
-                "type": "Temporary",
+                "type": "Normal",
                 "takeaway": true,
                 "date": {
                     "start": "1/7/2019",

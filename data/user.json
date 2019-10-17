@@ -1,17 +1,16 @@
-[
-    {
-        "username":"HelloWorld",
-        "password":"password",
-        "type":"user",
-        "likes":{
-            "restaurant":[{"id":"1001"}],
-            "menu":[{"id":"1002"}]
+[{
+        "username": "HelloWorld",
+        "password": "password",
+        "type": "user",
+        "likes": {
+            "restaurant": [{ "id": "1001" }],
+            "menu": [{ "id": "1002" }]
         }
     },
     {
-        "username":"operator",
-        "password":"password",
-        "type":"operator",
-        "restaurant":"1001"
+        "username": "operator",
+        "password": "password",
+        "type": "operator",
+        "restaurant": "1001"
     }
 ]
