@@ -75,6 +75,7 @@
         "name": "Espuma",
         "type": "Spanish/International/Dessert/Coffee Shop/Upper-floor Cafe",
         "introduction": "Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.",
+        "banner":"espuma1.jpg",
         "branch": [{
             "location": {
                 "tel": "27392080",
