@@ -189,9 +189,8 @@ const render = {
         },
         set:{
             title:(el,titles)=>{
-                const table = $(el);
-                const th = [...table.find("th")];
-                th.forEach((v,i)=>{$(v).text(titles[i])})
+                const th = $(el).find("thead");
+                th.html(titles.map(v=>"<th>"+v+"</th>"))
             },
             content:(el,contents)=>{
                 const tb = $(el).find("tbody");
