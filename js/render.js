@@ -61,14 +61,17 @@ const render = {
                 title.html(content);
             },
             content:(el,content)=>{
-                const title = $(el).find(".card-text");
-                title.html(content);
+                const body = $(el).find(".card-text");
+                body.html(content);
             },
             footer:(el,content)=>{
-                const title = $(el).find(".card-footer");
-                title.html(content);
-            }
-
+                const footer = $(el).find(".card-footer");
+                footer.html(content);
+            },
+            pattern:(el,patterns)=>{
+                const card = $(el);
+                card.attr("class",patterns);
+            },
         }
 
     },

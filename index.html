@@ -42,8 +42,7 @@
 
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
-          <img class="card-img-top"
-            src="image/espuma1.jpg" alt="">
+          <img class="card-img-top" src="image/espuma1.jpg" alt="">
           <div class="card-body">
             <h4 class="card-title">Espuma</h4>
             <p class="card-text">Spanish/
@@ -98,12 +97,13 @@
     $("#nav").load("components/nav.html");
     $("#header").load("components/header.html");
     $("#footer").load("components/footer.html");
-    var fav;
-    $.getJSON("data/fav.json",function(data){fav=data;})
-    $(document).ready(()=>{
-      const slider = render.slider.create.el();
-      render.slider.set.images(slider,fav.slider.map(v=>v.src))
-      $("#slide-show").append(slider)
+    $(document).ready(() => {
+      $.getJSON("data/fav.json", function (data) {
+        const slider = render.slider.create.el();
+        render.slider.set.images(slider, data.slider.map(v => v.src))
+        $("#slide-show").append(slider)
+      })
+
     })
   </script>
 
