@@ -1,8 +1,9 @@
 [{
         "id": "1001",
         "name": "ItaMoMo",
-        "foodType": "Italian",
-        "introduction": "",
+        "type": "Italian",
+        "introduction": "Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.",
+        "banner":"itaMoMo1.jpg",
         "branch": [{
                 "location": {
                     "tel": "35802832",
@@ -72,7 +73,7 @@
     {
         "id": "1002",
         "name": "Espuma",
-        "foodType": "Spanish/International/Dessert/Coffee Shop/Upper-floor Cafe",
+        "type": "Spanish/International/Dessert/Coffee Shop/Upper-floor Cafe",
         "introduction": "Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.",
         "branch": [{
             "location": {
@@ -133,7 +134,7 @@
     {
         "id": "1003",
         "name": "PAN de PAIN Pancakes & Sweets",
-        "foodType": "Japanese/Dessert/Coffee Shop",
+        "type": "Japanese/Dessert/Coffee Shop",
         "introduction": "PAN de PAIN Pancakes & Sweets is a popular dessert restaurant from Okinawa that serves Japanese pancakes and garland coffee. One of their most popular dishes is the Strawberry Pancake with fresh strawberries, cream and strawberry ice cream.",
         "branch": [{
             "location": {

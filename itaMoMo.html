@@ -32,7 +32,7 @@
         <div class="row">
 
             <div class="col-lg-3">
-                <h1 class="my-4">Espuma</h1>
+                <h1 id="r-name" class="my-4"></h1>
                 <div class="list-group">
                     <a id="infobtn" name="info" class="list-group-item active btn-primary">Information</a>
                     <a id="meunsbtn" name="meuns" class="list-group-item">Meuns</a>
@@ -43,18 +43,7 @@
 
             <div class="col-lg-9">
                 <div id="info" class="view">
-                    <div class="card mt-4">
-                        <img class="card-img-top img-fluid" src="image/espuma1.jpg">
-                        <div class="card-body">
-                            <h3 class="card-title">Tsim Sha Tsui</h3>
-                            <h6>2/F, H8, 8 Hau Fook Street, Tsim Sha Tsui | 25761968</h6>
-                            <p>4-min walk from Exit B2, Tsim Sha Tsui / East Tsim Sha Tsui MTR Station</p>
-                            <p class="card-text">Espuma offers customers with great Spanish food and coffee. They offer
-                                a wide range of foods including tapas, asian delights and desserts. Combining 60 years
-                                of knowledge, Espuma serves delightful coffee the Barcelona way.</p>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
-                        </div>
-                    </div>
+                    
                     <!-- /.card -->
 
                     <div class="card card-outline-secondary my-4">
@@ -127,6 +116,15 @@
         $(document).ready(function () {
             render.site.load();
             $.getJSON("data/restaurant.json", function (data) {
+                const intro = render.card.create.el();
+                const info = data.filter(v => (v.id == r.id))[0];
+                $("#r-name").text(info.name)
+                render.card.set.title(intro,"Information of Restaurant");
+                render.card.set.content(intro,"<p><b>Type : "+info.type+"</b></p>"+"<b>Introduction:"+"</b>"+"<p>"+info.introduction+"</p>");
+                render.card.set.footer(intro,"");
+                intro.prepend($("<img src='image/"+info.banner+"' class='card-img-top img-fluid'>"));
+                intro.addClass("my-5");
+                $("#info").prepend(intro);
                 const menu = render.table.create.el();
                 const tmenu = render.table.create.el();
                 const m = data.filter(v => (v.id == r.id))[0].menu;
