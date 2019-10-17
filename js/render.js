@@ -153,10 +153,50 @@ const render = {
         }
     },
     table:{
-
+        create:{
+            html:()=>{
+                return `
+                <table class="table">
+                <thead>
+                <tr>
+                <th>Title-1</th>
+                <th>Title-2</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>item-1</td>
+		        <td>item-2</td>
+	            </tr>
+                <tr>
+                <td>item-1</td>
+		        <td>item-2</td>
+	            </tr>
+                </tbody>
+                </table>
+                `
+            },
+            el:()=>{
+                const el = $("<table class=\"table\">");
+                el.html(`<thead><tr><th>Title-1</th><th>Title-2</th></tr></thead><tbody><tr><td>item-1</td><td>item-2</td></tr><tr><td>item-1</td><td>item-2</td></tr></tbody>`);
+                return el;
+            }
+        },
+        get:{
+            all:()=>{
+                return $(".table");
+            }
+        },
+        set:{
+            title:(el,titles)=>{
+                const table = $(el);
+                const th = [...table.find("th")];
+                th.forEach((v,i)=>{$(v).text(titles[i])})
+            },
+            content:(el,contents)=>{
+                const tb = $(el).find("tbody");
+                tb.html(contents.map((v)=>"<tr>"+v.map((v)=>"<td>"+v+"</td>")+"</tr>"))
+            }
+        }
     }
 };
-
-const grid = {
-
-}
