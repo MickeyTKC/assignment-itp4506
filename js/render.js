@@ -33,9 +33,44 @@ const render = {
         create:{
             html:()=>{
                 return `
+                <div class="card">
+                <div class="card-body">
+                <h4 class="card-title">Card-Title</h4>
+                <p class="card-text">Card-Content</p>
+                </div>
+                <div class="card-footer">
+                <a href="#" class="btn btn-primary">Card-Button</a>
+                </div>
+                </div>
                 `
+            },
+            el:()=>{
+                const el = $("<div class='card'>");
+                el.html(`<div class="card-body"><h4 class="card-title">Card-Title</h4><p class="card-text">Card-Content</p></div><div class="card-footer"><a href="#" class="btn btn-primary">Card-Button</a></div>`);
+                return el;
             }
+        },
+        get:{
+            all:()=>{
+                return $(".card");
+            }
+        },
+        set:{
+            title:(el,content)=>{
+                const title = $(el).find(".card-title");
+                title.html(content);
+            },
+            content:(el,content)=>{
+                const title = $(el).find(".card-text");
+                title.html(content);
+            },
+            footer:(el,content)=>{
+                const title = $(el).find(".card-footer");
+                title.html(content);
+            }
+
         }
+
     },
     list: {
 
@@ -56,10 +91,6 @@ const render = {
                 el.html(`<img class="slide" src="image/error.jpg"/><a class="prev btn btn-primary">‹</a><a class="next btn btn-primary" >›</a>`);
                 return el;
             }
-        },
-        slides:{
-            cur:0,
-            src:["image/error.jpg"],
         },
         get:{
             all:()=>{
@@ -89,6 +120,7 @@ const render = {
                     }
                     slide.attr("src",slider.slides[slider.current])
                 })
+                $(el).find(".slide").attr("src",slider.slides[0]);
             }
         }
     },

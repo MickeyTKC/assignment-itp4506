@@ -12,6 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/core.css" rel="stylesheet">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     <div id="header"></div>
     <!-- Page Features -->
     <div class="row text-center">
-
+      <div id="slide-show" class="col-lg-12"></div>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card h-100">
           <img class="card-img-top" src="image/itaMoMo1.jpg" alt="">
@@ -97,6 +98,13 @@
     $("#nav").load("components/nav.html");
     $("#header").load("components/header.html");
     $("#footer").load("components/footer.html");
+    var fav;
+    $.getJSON("data/fav.json",function(data){fav=data;})
+    $(document).ready(()=>{
+      const slider = render.slider.create.el();
+      render.slider.set.images(slider,fav.slider.map(v=>v.src))
+      $("#slide-show").append(slider)
+    })
   </script>
 
 </body>
