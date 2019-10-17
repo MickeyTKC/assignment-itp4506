@@ -136,6 +136,7 @@
         "name": "PAN de PAIN Pancakes & Sweets",
         "type": "Japanese/Dessert/Coffee Shop",
         "introduction": "PAN de PAIN Pancakes & Sweets is a popular dessert restaurant from Okinawa that serves Japanese pancakes and garland coffee. One of their most popular dishes is the Strawberry Pancake with fresh strawberries, cream and strawberry ice cream.",
+        "banner":"pan1.jpg",
         "branch": [{
             "location": {
                 "tel": "25761968",
