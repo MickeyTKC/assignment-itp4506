@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Espuma</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+    <link href="css/restaurant.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div id="header"></div>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="my-4">Espuma</h1>
+                <div class="list-group">
+                    <a id="infobtn" name="info" class="list-group-item active btn-primary">Information</a>
+                    <a id="meunsbtn" name="meuns" class="list-group-item">Meuns</a>
+                    <a id="branchesbtn" name="branches" class="list-group-item">Branches</a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+                <div id="info" class="view">
+                    <div class="card mt-4">
+                        <img class="card-img-top img-fluid" src="image/espuma1.jpg">
+                        <div class="card-body">
+                            <h3 class="card-title">Tsim Sha Tsui</h3>
+                            <h6>2/F, H8, 8 Hau Fook Street, Tsim Sha Tsui | 25761968</h6>
+                            <p>4-min walk from Exit B2, Tsim Sha Tsui / East Tsim Sha Tsui MTR Station</p>
+                            <p class="card-text">Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.</p>
+                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Reviews
+                        </div>
+                        <div class="card-body">
+                            <p>The ribs are decent, with bbq sauce and fries for the sides. But guys never ever go for the churros as there’re no flour in the middle but only the fried skin!! There’re four churros and I only ate half of a churro. It’s disappointing!</p>
+                            <small class="text-muted">Posted by Anonymous on 23/09/19</small>
+                            <hr>
+                            <p>Here is the Summer Tea Set ☕️by Espuma. To be honest, I am a bit disappointed for this tea set. Although it looked and presented well( with music as background when you opened the lunch box) , yet, the taste of the cake and
+                                desserts weren’t really good. It’s more like a piece of kindergarten art work instead of desserts.
+                            </p>
+                            <small class="text-muted">Posted by Anonymous on 07/08/19</small>
+                            <hr>
+                            <p>It’s a applewood smoked huge free range chicken! Not kidding, the size of the chicken is really huge! I thought we couldn’t finish it, but it was so tasty we finished all! The chicken meat is so soft and fully flavoured! Even
+                                the chicken breast meat is soft! The flavour is rich in taste but not salty!</p>
+                            <small class="text-muted">Posted by Anonymous on 13/05/19</small>
+                            <hr>
+                            <a href="#" class="btn btn-success">Leave a Review</a>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <div id="meuns" class="view">
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <b>Meun</b>
+                        </div>
+                        <div class="card-body">
+                            <div id="menu"></div>
+                        </div>
+                        <div class="card-header">
+                            <b>Take-Away Meun</b>
+                        </div>
+                        <div class="card-body">
+                            <div id="tmenu"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="branches" class="view">
+                    <div class="card mt-4">
+                        <div class="coming-soon">
+                            <img src="image/coming-soon-3.png">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-9 -->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/restaurant.js"></script>
+    <script>
+        const r = {id:"1001"};
+        $(document).ready(function() {
+            render.site.load();
+            const menu = render.table.create.el();
+            const tmenu = render.table.create.el();
+            $.getJSON("data/restaurant.json",function(data){
+                title = ["Name","Type"];
+                const m = data.filter(v=>(v.id==r.id))[0].menu;
+                render.table.set.title(menu,title);
+                render.table.set.title(tmenu,title);
+                render.table.set.content(menu,m.map(v=>[v.name,v.type]));
+                render.table.set.content(tmenu,m.filter(v=>(v.takeaway)).map(v=>[v.name,v.type]));
+                $("#menu").append(menu);
+                $("#tmenu").append(tmenu);
+            })
+        })
+    </script>
+</body>
+
+</html>

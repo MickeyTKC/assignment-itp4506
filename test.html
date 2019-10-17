@@ -40,13 +40,12 @@
     <script src="js/render.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
-        $("#nav").load("components/nav.html");
         $("#header").load("components/header.html");
-        $("#footer").load("components/footer.html");
         let menu ;
         let title;
         let items;
         $(document).ready(function () {
+            render.site.load();
             const id = "1001";
             $.getJSON("data/restaurant.json",function(data){
                 const table = render.table.create.el();

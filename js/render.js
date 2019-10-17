@@ -2,6 +2,8 @@
 const render = {
     site: {
         load: () => {
+            $("body").prepend($("<div id='nav'>"))
+            $("body").append($("<div id='footer'>"))
             $("#nav").load("components/nav.html");
             $("#footer").load("components/footer.html");
         }
