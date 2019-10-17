@@ -49,7 +49,9 @@
                             <h3 class="card-title">Tsim Sha Tsui</h3>
                             <h6>2/F, H8, 8 Hau Fook Street, Tsim Sha Tsui | 25761968</h6>
                             <p>4-min walk from Exit B2, Tsim Sha Tsui / East Tsim Sha Tsui MTR Station</p>
-                            <p class="card-text">Espuma offers customers with great Spanish food and coffee. They offer a wide range of foods including tapas, asian delights and desserts. Combining 60 years of knowledge, Espuma serves delightful coffee the Barcelona way.</p>
+                            <p class="card-text">Espuma offers customers with great Spanish food and coffee. They offer
+                                a wide range of foods including tapas, asian delights and desserts. Combining 60 years
+                                of knowledge, Espuma serves delightful coffee the Barcelona way.</p>
                             <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
                         </div>
                     </div>
@@ -60,15 +62,22 @@
                             Reviews
                         </div>
                         <div class="card-body">
-                            <p>The ribs are decent, with bbq sauce and fries for the sides. But guys never ever go for the churros as there’re no flour in the middle but only the fried skin!! There’re four churros and I only ate half of a churro. It’s disappointing!</p>
+                            <p>The ribs are decent, with bbq sauce and fries for the sides. But guys never ever go for
+                                the churros as there’re no flour in the middle but only the fried skin!! There’re four
+                                churros and I only ate half of a churro. It’s disappointing!</p>
                             <small class="text-muted">Posted by Anonymous on 23/09/19</small>
                             <hr>
-                            <p>Here is the Summer Tea Set ☕️by Espuma. To be honest, I am a bit disappointed for this tea set. Although it looked and presented well( with music as background when you opened the lunch box) , yet, the taste of the cake and
-                                desserts weren’t really good. It’s more like a piece of kindergarten art work instead of desserts.
+                            <p>Here is the Summer Tea Set ☕️by Espuma. To be honest, I am a bit disappointed for this
+                                tea set. Although it looked and presented well( with music as background when you opened
+                                the lunch box) , yet, the taste of the cake and
+                                desserts weren’t really good. It’s more like a piece of kindergarten art work instead of
+                                desserts.
                             </p>
                             <small class="text-muted">Posted by Anonymous on 07/08/19</small>
                             <hr>
-                            <p>It’s a applewood smoked huge free range chicken! Not kidding, the size of the chicken is really huge! I thought we couldn’t finish it, but it was so tasty we finished all! The chicken meat is so soft and fully flavoured! Even
+                            <p>It’s a applewood smoked huge free range chicken! Not kidding, the size of the chicken is
+                                really huge! I thought we couldn’t finish it, but it was so tasty we finished all! The
+                                chicken meat is so soft and fully flavoured! Even
                                 the chicken breast meat is soft! The flavour is rich in taste but not salty!</p>
                             <small class="text-muted">Posted by Anonymous on 13/05/19</small>
                             <hr>
@@ -94,13 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="branches" class="view">
-                    <div class="card mt-4">
-                        <div class="coming-soon">
-                            <img src="image/coming-soon-3.png">
-                        </div>
-                    </div>
-                </div>
+                <div id="branches" class="view"></div>
                 <!-- /.col-lg-9 -->
 
             </div>
@@ -118,20 +121,28 @@
     <script src="js/render.js"></script>
     <script src="js/restaurant.js"></script>
     <script>
-        const r = {id:"1001"};
-        $(document).ready(function() {
+        const r = { id: "1001" };
+        $(document).ready(function () {
             render.site.load();
-            const menu = render.table.create.el();
-            const tmenu = render.table.create.el();
-            $.getJSON("data/restaurant.json",function(data){
-                title = ["Name","Type"];
-                const m = data.filter(v=>(v.id==r.id))[0].menu;
-                render.table.set.title(menu,title);
-                render.table.set.title(tmenu,title);
-                render.table.set.content(menu,m.map(v=>[v.name,v.type]));
-                render.table.set.content(tmenu,m.filter(v=>(v.takeaway)).map(v=>[v.name,v.type]));
+            $.getJSON("data/restaurant.json", function (data) {
+                const menu = render.table.create.el();
+                const tmenu = render.table.create.el();
+                const m = data.filter(v => (v.id == r.id))[0].menu;
+                title = ["Name", "Type"];
+                render.table.set.title(menu, title);
+                render.table.set.title(tmenu, title);
+                render.table.set.content(menu, m.map(v => [v.name, v.type]));
+                render.table.set.content(tmenu, m.filter(v => (v.takeaway)).map(v => [v.name, v.type]));
                 $("#menu").append(menu);
                 $("#tmenu").append(tmenu);
+                const b = data.filter(v => (v.id == r.id))[0].branch;
+                for(i=0;i<b.length;i++){
+                    const card = render.card.create.el();
+                    render.card.set.title(card,b[i].location.locat);
+                    render.card.set.content(card,"<p>Location : "+b[i].location.string+"<p>"+"<p>Phone Number : "+b[i].location.tel+"</p>"+"<p>How To Go : "+b[i].location.howToGo+"</p>")
+                    render.card.set.footer(card,"<a class='btn btn-primary' href='"+b[i].location.map+"'>View Google Map</a>")
+                    $("#branches").append(card)
+                }
             })
         })
     </script>
