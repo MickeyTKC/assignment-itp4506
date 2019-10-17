@@ -95,6 +95,8 @@
                         <div class="card-body">
                             <div id="menu"></div>
                         </div>
+                    </div>
+                    <div class="card mt-4">
                         <div class="card-header">
                             <b>Take-Away Meun</b>
                         </div>
@@ -136,11 +138,12 @@
                 $("#menu").append(menu);
                 $("#tmenu").append(tmenu);
                 const b = data.filter(v => (v.id == r.id))[0].branch;
-                for(i=0;i<b.length;i++){
+                for (i = 0; i < b.length; i++) {
                     const card = render.card.create.el();
-                    render.card.set.title(card,b[i].location.locat);
-                    render.card.set.content(card,"<p>Location : "+b[i].location.string+"<p>"+"<p>Phone Number : "+b[i].location.tel+"</p>"+"<p>How To Go : "+b[i].location.howToGo+"</p>")
-                    render.card.set.footer(card,"<a class='btn btn-primary' href='"+b[i].location.map+"'>View Google Map</a>")
+                    render.card.set.title(card, b[i].location.locat);
+                    render.card.set.content(card, "<p>Location : " + b[i].location.string + "<p>" + "<p>Phone Number : " + b[i].location.tel + "</p>" + "<p>How To Go : " + b[i].location.howToGo + "</p>")
+                    render.card.set.footer(card, "<a class='btn btn-primary' href='" + b[i].location.map + "'>View Google Map</a>")
+                    card.addClass("my-5")
                     $("#branches").append(card)
                 }
             })
