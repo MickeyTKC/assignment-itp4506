@@ -64,6 +64,10 @@
                                 <textarea class="form-control" id="introduction" rows="4"></textarea>
                             </div>
                             <br />
+                            <div class="right">
+                                <input class="btn btn-outline-success" id="save" type="submit" value="Save">
+                                <input class="btn btn-outline-danger" id="reset" type="reset" value="Reset">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,9 +84,10 @@
                                         <tr>
                                             <th scope="col">Name</th>
                                             <th scope="col">Type</th>
+                                            <th scope="col">TakeAway</th>
                                             <th scope="col">StartDate</th>
                                             <th scope="col">EndDate</th>
-                                            <th scope="col">TakeAway</th>
+                                            <th scope="col"></th>
                                         </tr>
                                         <tbody>
 
@@ -90,44 +95,47 @@
                                     </thead>
                                 </table>
                             </div>
-                            <div class="form-label-group">
-                                <label for="name" class="inputlbl">Name</label>
-                                <input type="text" id="name" class="form-control" required autofocus />
-                            </div>
-                            <div class="form-label-group">
-                                <div class="col-lg-5" style="display: inline-block;">
-                                    <label for="meunType" class="inputlbl">Type</label>
-                                    <select id="meunType" class="form-control" required>
+                            <form id="menuForm">
+                                <div class="form-label-group">
+                                    <label for="name" class="inputlbl">Name</label>
+                                    <input type="text" id="mname" class="form-control" required autofocus />
+                                </div>
+                                <div class="form-label-group">
+                                    <div class="col-lg-5" style="display: inline-block;">
+                                        <label for="meunType" class="inputlbl">Type</label>
+                                        <select id="meunType" class="form-control" required>
                                     <option value="Normal">Normal</option>
                                     <option value="Special">Special</option>
                                     <option value="Temporary">Temporary</option>
                                     <option value="Seasonal">Seasonal</option>     
                                 </select>
-                                </div>
-                                <div class="col-lg-5" style="display: inline-block;">
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="takeAway" />
-                                        <label id="takeAwaylbl" for="takeAway" class="custom-control-label inputlbl">Take Away</label>
                                     </div>
-                                </div>
+                                    <div class="col-lg-5" style="display: inline-block;">
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            <input type="checkbox" class="custom-control-input" id="takeAway" />
+                                            <label id="takeAwaylbl" for="takeAway" class="custom-control-label inputlbl">Take Away</label>
+                                        </div>
+                                    </div>
 
-                            </div>
-                            <div class="form-label-group">
-                                <div class="col-lg-5" style="display:inline-block;">
-                                    <label for="start" class="inputlbl">Start Date</label>
-                                    <input type="date" class="form-control" id="start" />
                                 </div>
-                                <div class="col-lg-5" style="display:inline-block;">
-                                    <label for="end" class="inputlbl">End Date</label>
-                                    <input type="date" class="form-control" id="end" />
-                                </div>
+                                <div class="form-label-group">
+                                    <div class="col-lg-5" style="display:inline-block;">
+                                        <label for="start" class="inputlbl">Start Date</label>
+                                        <input type="date" class="form-control" id="start" />
+                                    </div>
+                                    <div class="col-lg-5" style="display:inline-block;">
+                                        <label for="end" class="inputlbl">End Date</label>
+                                        <input type="date" class="form-control" id="end" />
+                                    </div>
 
-                            </div>
-                            <div class="form-label-group">
-                                <label for="introduction" class="inputlbl">Introduction</label>
-                                <textarea class="form-control" id="introduction" rows="4"></textarea>
-                            </div>
+                                </div>
+                            </form>
                             <br />
+                            <div class="right">
+                                <input class="btn btn-outline-info" id="madd" type="button" value="Add">
+                                <input class="btn btn-outline-success" id="msave" type="submit" value="Save">
+                                <input class="btn btn-outline-danger" id="mreset" type="reset" value="Cancel">
+                            </div>
                         </div>
                     </div>
                 </div>
