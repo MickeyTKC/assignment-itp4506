@@ -42,7 +42,7 @@ const render = {
                 <a href="#" class="btn btn-primary">Card-Button</a>
                 </div>
                 </div>
-                `
+                `;
             },
             el:()=>{
                 const el = $("<div class='card'>");
@@ -76,7 +76,32 @@ const render = {
 
     },
     list: {
-
+        create:{
+            html:()=>{
+                return `
+                <div class="list-group">
+                <a class="list-group-item">List Item 1</a>
+                <a class="list-group-item">List Item 2</a>
+                </div>
+                `;
+            },
+            el:()=>{
+                const el = $("<div class=\"list-group\">");
+                el.html(`<a class="list-group-item">List Item 1</a>`);
+                return el;
+            }
+        },
+        get:{
+            all:()=>{
+                return $(".list-group");
+            }
+        },
+        set:{
+            item:(el,items)=>{
+                const list = $(el);
+                list.html(items.map(v=>"<a class=\"list-group-item\">"+v+"</a>").join(""))
+            }
+        }
     },
     slider: {
         create:{
