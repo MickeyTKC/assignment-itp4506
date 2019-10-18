@@ -26,16 +26,26 @@
     </div>
   </div>
   <script>
-    const visitor = localStorage.valueOf("user").length ? JSON.parse(localStorage.valueOf("user")) : { type: "walk-in" };
+    const visitor = localStorage.valueOf("user").length ? JSON.parse(localStorage["user"]) : { type: "walk-in" };
     const nav = $("nav");
     const user = localStorage["user"];
     nav.find("#user").hover(
       function () {
         const list = render.list.create.el();
-        if (visitor.type = "walk-in") {
+        if (visitor.type == "walk-in") {
           list.attr("style", "position:absolute;")
           render.list.set.item(list, ["Login"]);
-          list.find(".list-group-item").attr("href","login.html")
+          list.find(".list-group-item").attr("href", "login.html")
+        }
+        else if(visitor.type == "user"){
+          list.attr("style", "position:absolute;")
+          render.list.set.item(list, ["My Favorite","Logout"]);
+          $(list.find(".list-group-item")[0]).attr("href", "login.html")
+          $(list.find(".list-group-item")[1]).attr("style","cursor:pointer;").click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });location="login.html"})
+        }
+        else if(visitor.type == "operator"){
+          list.attr("style", "position:absolute;")
+          render.list.set.item(list, ["My Favorite","Manage Restaurant","Logout"]);
         }
         nav.find("#user").append(list);
         nav.find(".list-group-item").hover(function () { $(this).addClass("active") }, function () { $(this).removeClass("active") })
