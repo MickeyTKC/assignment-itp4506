@@ -1,3 +1,4 @@
+//List Group Event
 let items = $(".list-group-item");
 let views = $(".view");
 

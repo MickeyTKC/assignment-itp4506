@@ -111,14 +111,14 @@ const render = {
                 return `
                 <div class="slider">
                 <img class="slide" src="image/error.jpg"/>
-                <a class="prev btn btn-primary">‹</a>
-                <a class="next btn btn-primary">›</a>
+                <a class="prev btn btn-secondary">‹</a>
+                <a class="next btn btn-secondary">›</a>
                 </div>
                 `
             },
             el:()=>{
                 const el = $("<div class='slider'>");
-                el.html(`<img class="slide" src="image/error.jpg"/><a class="prev btn btn-primary">‹</a><a class="next btn btn-primary" >›</a>`);
+                el.html(`<img class="slide" src="image/error.jpg"/><a class="prev btn btn-secondary">‹</a><a class="next btn btn-secondary" >›</a>`);
                 return el;
             }
         },

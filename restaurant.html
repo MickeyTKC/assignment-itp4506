@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Restaurant System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main" class="container">
+        <!-- Header -->
+        <div id="header"></div>
+        <!-- Page Features -->
+        <div class="row">
+            <div class="my-5 col-lg-12"></div>
+            <div id="card-filter" class="card my-5 col-lg-12">
+                <div class="card-header">
+                    The Searching of Restaurant
+                </div>
+                <div class="card-body">
+                    <div class="card text">
+                        <form id="r-filter">
+                            <div class="card-body">
+                                <div class="form-label-group my-2">
+                                    <label class="form">Key Words</label>
+                                    <input id="r-name" class="form-control">
+                                </div>
+                                <div class="form-label-group my-2" style="text-align: right;">
+                                    <a>More Details</a>
+                                    <div id="r-search" class="btn btn-primary r-100">Search</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="card-result" class="card col-lg-12 my-3">
+                <div class="card-header">Result:</div>
+                <div class="card-body">
+                    <div id="card-result-content" class="card-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/render.js"></script>
+    <script>
+        var r;
+        function display(result) {
+            const cr = $("#card-result").find("#card-result-content").addClass("row"); //bind result card content
+            if (result.length > 0) {
+                cr.html(""); //reset result card content
+                result.forEach((v, i) => {
+                    const rc = $("<div>"); //create a div of record
+                    rc.addClass("col-lg-3 col-md-6 col-sm-12 flex-row");
+                    const card = render.card.create.el(); // create card
+                    card.addClass("h-100") //card config
+                    card.prepend($("<img src='image/" + v.banner + "' style='width:100%'>")); //prepend banner to card
+                    render.card.set.title(card, v.name);
+                    const content = $("<div>");
+                    content.append($("<p>").html("Type : <span>" + v.type+"</span"))
+                    render.card.set.content(card, content);
+                    render.card.set.footer(card, "")
+                    cr.append(rc.append(card)); //add the card to the result card content
+                })
+            }
+            else {
+                const message = $("<div style='text-algin:center'>");
+                message.text("Have not match restaurant")
+                cr.html(message)
+            }
+        }
+        $(document).ready(function () {
+            render.site.load();
+            function search(keys) {
+
+            }
+
+            $.getJSON("data/restaurant.json", (data) => {
+                display(data);
+                r = data;
+            })
+        })
+    </script>
+</body>
+
+</html>
