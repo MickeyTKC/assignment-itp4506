@@ -82,9 +82,9 @@
 
 .chgbtn {
     background: transparent;
-    border: 1px solid blue;
+    border: 1px solid #01579B;
     border-radius: 2em;
-    color: blue;
+    color: #01579B;
     font-size: 12px;
     height: 24px;
     width: 24px;
@@ -98,4 +98,20 @@
 
 .right {
     text-align: right;
+}
+
+fieldset {
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding-left: 20px;
+}
+
+legend {
+    width: auto;
+}
+
+fieldset:hover {
+    border: 1px solid #03A9F4;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px -1px #4FC3F7;
 }

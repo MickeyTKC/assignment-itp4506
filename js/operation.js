@@ -1,5 +1,7 @@
+let operator = {};
 $(document).ready(function() {
     var restId;
+
     $.getJSON("data/user.json", function(data) {
         for (var i in data) {
             console.log(data[i].username);
@@ -8,10 +10,12 @@ $(document).ready(function() {
             }
         }
     });
+
     $.getJSON("data/restaurant.json", function(data) {
         console.log(restId);
         for (var i in data) {
             if (data[i].id == restId) {
+                $("#rTitle").text(data[i].name);
                 $("#name").val(data[i].name);
                 $("#foodType").val(data[i].type);
                 $("#introduction").val(data[i].introduction);
@@ -45,6 +49,11 @@ $(document).ready(function() {
             $("#madd").css("display", "none");
             $("#msave").css("display", "inline");
             $("#mreset").css("display", "inline");
+            $("#mname").val("");
+            $("#menuType").val("");
+            document.getElementById("takeAway").checked = false;
+            $("#start").val("");
+            $("#end").val("");
         });
 
         $("#mreset").click(function() {
@@ -126,10 +135,80 @@ $(document).ready(function() {
                 $(this).parent().parent().remove();
                 $("tbody tr:nth-child(even)").addClass("table-success");
                 $("tbody tr:nth-child(odd)").addClass("table-warning");
-            })
-        })
+            });
+        });
 
-    });
+        for (var i in data) {
+            if (data[i].id == restId) {
+                for (var j in data[i].branch) {
+                    $("#bbody").append("<fieldset id='bbranch" + j + "' class='form-label-group'>" +
+                        "<legend>" + data[i].branch[j].location.locat + "</legend>" +
+                        "<p>" + data[i].branch[j].location.string + " | " + data[i].branch[j].location.tel + "</p>" +
+                        "<p>" + data[i].branch[j].location.howToGo + "</p>" +
+                        "<p class='inputlbl'>\tMap Link: " + data[i].branch[j].location.map + "</p>" +
+                        "</fieldset>");
+                }
 
+                $("#branchesBody fieldset").click(function() {
+                    console.log("click")
+                    $("#bForm").css("display", "inline");
+                    $("#badd").css("display", "none");
+                    $("#bsave").css("display", "inline");
+                    $("#breset").css("display", "inline");
+                    $("#bdel").css("display", "inline");
+                    const j = $(this).index();
+                    operator.branch = j;
+                    console.log(operator)
+                    $("#blocat").val(data[i].branch[j].location.locat);
+                    $("#btel").val(data[i].branch[j].location.tel);
+                    $("#bstring").val(data[i].branch[j].location.string);
+                    $("#bhowToGo").val(data[i].branch[j].location.howToGo);
+                    $("#bmap").val(data[i].branch[j].location.map);
+                });
+            }
+            break;
+        }
+    })
+
+    $("#bsave").click(function() {
+        $("#bbody").append("<fieldset class='form-label-group'>" +
+            "<legend>" + $("#blocat").val() + "</legend>" +
+            "<p>" + $("#bstring").val() + " | " + $("#btel").val() + "</p>" +
+            "<p>" + $("#bhowToGo").val() + "</p>" +
+            "<p class='inputlbl'>\tMap Link: " + $("#bmap").val() + "</p>" +
+            "</fieldset>");
+    })
+
+
+    $("#bForm").css("display", "none");
+    $("#badd").css("display", "inline");
+    $("#bsave").css("display", "none");
+    $("#breset").css("display", "none");
+    $("#bdel").css("display", "none");
+
+    $("#badd").click(function() {
+        $("#bForm").css("display", "inline");
+        $("#badd").css("display", "none");
+        $("#bsave").css("display", "inline");
+        $("#breset").css("display", "inline");
+        $("#bdel").css("display", "inline");
+        $("#blocat").val("");
+        $("#btel").val("");
+        $("#bstring").val("");
+        $("#bhowToGo").val("");
+        $("#bmap").val("");
+    })
+
+    $("#breset").click(function() {
+        $("#bForm").css("display", "none");
+        $("#badd").css("display", "inline");
+        $("#bsave").css("display", "none");
+        $("#breset").css("display", "none");
+        $("#bdel").css("display", "none");
+    })
+
+    $("#bdel").click(function() {
+        $($("#bbody").find("fieldset")[operator.branch]).remove()
+    })
 
 });
