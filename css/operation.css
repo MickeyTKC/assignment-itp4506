@@ -4,11 +4,6 @@
     color: rgb(128, 106, 106);
 }
 
-.inputlbl {
-    font-size: 14px;
-    color: grey;
-}
-
 .card-header {
     font-size: 24px;
 }
@@ -94,10 +89,6 @@
 
 .chgbtn:hover {
     opacity: 1;
-}
-
-.right {
-    text-align: right;
 }
 
 fieldset {

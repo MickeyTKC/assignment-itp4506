@@ -35,3 +35,12 @@ html {
 textarea {
     resize: none;
 }
+
+.right {
+    text-align: right;
+}
+
+.inputlbl {
+    font-size: 14px;
+    color: grey;
+}

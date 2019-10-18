@@ -1,21 +1,12 @@
 let operator = {};
 $(document).ready(function() {
-    var restId;
-
-    $.getJSON("data/user.json", function(data) {
-        for (var i in data) {
-            console.log(data[i].username);
-            if (data[i].username == "operator") {
-                restId = data[i].restaurant;
-            }
-        }
-    });
+    const restId = Object.keys(localStorage["user"]).length ? JSON.parse(localStorage["user"]).restaurant : "0";
 
     $.getJSON("data/restaurant.json", function(data) {
         console.log(restId);
         for (var i in data) {
             if (data[i].id == restId) {
-                $("#rTitle").text(data[i].name);
+                $("#rTitle").html(data[i].name + `<label class="labelUserType">- OPERATOR</label>`);
                 $("#name").val(data[i].name);
                 $("#foodType").val(data[i].type);
                 $("#introduction").val(data[i].introduction);

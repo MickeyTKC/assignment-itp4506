@@ -1,4 +1,8 @@
 @import url("core.css");
+.row {
+    min-height: 100vh;
+}
+
 .list-group .list-group-item {
     cursor: pointer;
 }

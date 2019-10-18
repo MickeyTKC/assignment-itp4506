@@ -2,15 +2,13 @@
         "username": "HelloWorld",
         "password": "password",
         "type": "user",
-        "likes": {
-            "restaurant": [{ "id": "1001" }],
-            "menu": [{ "id": "1002" }]
-        }
+        "likes": ["1001", "1002"]
     },
     {
         "username": "operator",
         "password": "password",
         "type": "operator",
+        "likes": ["1001"],
         "restaurant": "1001"
     }
 ]

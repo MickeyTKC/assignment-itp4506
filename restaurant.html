@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <title>Restaurant System</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                         <div id="r-filter">
                             <div class="card-body">
                                 <div class="form-label-group my-2">
-                                    <label class="form">Key Words</label>
+                                    <label class="form inputlbl">Key Words</label>
                                     <input id="r-keys" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2" style="text-align: right;">
@@ -55,6 +56,7 @@
         function search(result, keywords) {
             return result.filter(x => (x.name.toUpperCase().includes(keywords.toUpperCase()) || x.type.toUpperCase().includes(keywords.toUpperCase())))
         }
+
         function display(result) {
             const cr = $("#card-result").find("#card-result-content").addClass("row"); //bind result card content
             if (result.length > 0) {
@@ -67,25 +69,25 @@
                     card.prepend($("<img src='image/" + v.banner + "' style='width:100%'>")); //prepend banner to card
                     render.card.set.title(card, v.name);
                     const content = $("<div>");
-                    content.append($("<p>").html("Type : <span>" + v.type + "</span"))
+                    content.append($("<p>").html("<label style='color:grey;'>Type : </label><span> " + v.type + "</span>"))
                     render.card.set.content(card, content);
-                    render.card.set.footer(card, "")
+                    const detail = $("<a class='mx-1 my-1'>").text("View More").addClass("btn btn-primary").attr("href", v.link);
+                    render.card.set.footer(card, detail)
                     cr.append(rc.append(card)); //add the card to the result card content
                 })
-            }
-            else {
-                const message = $("<div style='text-algin:center'>");
+            } else {
+                const message = $("<div style='text-algin:center;color:red;'>");
                 message.text("Have not match restaurant")
                 cr.html(message)
             }
         }
-        $(document).ready(function () {
+        $(document).ready(function() {
             render.site.load();
             //load resturant data
             $.getJSON("data/restaurant.json", (data) => {
-                display(data);
-            })
-            //event
+                    display(data);
+                })
+                //event
             $("#r-search")
                 .click(() => {
                     $.getJSON("data/restaurant.json", (data) => {

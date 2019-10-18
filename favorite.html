@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Restaurant System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main" class="container">
+        <!-- Header -->
+        <div id="header"></div>
+        <!-- Page Features -->
+        <div class="container-fluid " style="min-height: 100vh;">
+            <div class=" row no-gutter ">
+                <div class="my-5 col-lg-12 "></div>
+                <div id="card-result" class="card col-lg-12 my-3 ">
+                    <div class="card-header ">My Favorite:</div>
+                    <div class="card-body ">
+                        <div id="card-result-content" class="card-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="jquery/jquery.min.js "></script>
+    <script src="js/bootstrap.bundle.min.js "></script>
+    <script src="js/render.js "></script>
+    <script>
+        $(document).ready(function() {
+            render.site.load();
+            const myFav = JSON.parse(localStorage["user"]).likes
+            $.getJSON("data/restaurant.json", (data) => {
+                //get metched restaurant
+                const result = myFav.map(x => data.filter(v => (v.id == x))).flat();
+                // bind to result card
+                const cr = $("#card-result").find("#card-result-content").addClass("row");
+                console.log(cr);
+                if (result.length) {
+                    result.forEach((v) => {
+                        const rc = $("<div>"); //create a div of record
+                        rc.addClass("col-lg-3 col-md-6 col-sm-12 flex-row");
+                        const card = render.card.create.el(); // create card
+                        card.addClass("h-100") //card config
+                        card.prepend($("<img src='image/" + v.banner + "' style='width:100%'>")); //prepend banner to card
+                        render.card.set.title(card, v.name);
+                        const content = $("<div>");
+                        content.append($("<p>").html("Type : <span>" + v.type + "</span"))
+                        render.card.set.content(card, content);
+                        const detail = $("<a class='mx-1 my-1'>").text("View More").addClass("btn btn-primary").attr("href", v.link);
+                        const remove = $("<div class='mx-1 my-1'>").text("Remove").addClass("btn btn-danger")
+                        const action = $("<div>").append(detail).append(remove);
+                        render.card.set.footer(card, action)
+                        cr.append(rc.append(card)); //add the card to the result card content
+                    })
+                    $(".btn-danger").click(function() {
+                        $(this).parent().parent().parent().remove();
+                    })
+                } else {
+                    rc.html("<p>No favorite restaurant<p>");
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

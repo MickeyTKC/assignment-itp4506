@@ -13,7 +13,6 @@ items.click(function() {
         if (this.name == (views[i].id)) {
             $(views[i]).css("display", "block");
             $(views[i]).fadeTo("slow", 1);
-
             break;
         }
     }
@@ -21,3 +20,19 @@ items.click(function() {
 
 $(".view").css("display", "none");
 $([...$(".view")][0]).css("display", "block");
+$("#addReview").css("display", "none");
+
+$("#leaveReview").click(function() {
+    $("#addReview").css("display", "inline");
+});
+
+$("#save").click(function() {
+    $(".comments").append("<hr><p>" + $("textarea").val() + "</p>" +
+        "<small class='text-muted'>Posted by " + visitor.username + "</small>");
+});
+
+
+$("#reset").click(function() {
+    $("#addReview").css("display", "none");
+    $("textarea").val("");
+});

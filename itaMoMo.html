@@ -43,7 +43,7 @@
 
             <div class="col-lg-9">
                 <div id="info" class="view">
-                    
+
                     <!-- /.card -->
 
                     <div class="card card-outline-secondary my-4">
@@ -51,26 +51,34 @@
                             Reviews
                         </div>
                         <div class="card-body">
-                            <p>The ribs are decent, with bbq sauce and fries for the sides. But guys never ever go for
-                                the churros as there’re no flour in the middle but only the fried skin!! There’re four
-                                churros and I only ate half of a churro. It’s disappointing!</p>
-                            <small class="text-muted">Posted by Anonymous on 23/09/19</small>
+                            <div class="comments">
+                                <p><span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars</p>
+                                <hr>
+                                <p>The ribs are decent, with bbq sauce and fries for the sides. But guys never ever go for the churros as there’re no flour in the middle but only the fried skin!! There’re four churros and I only ate half of a churro. It’s
+                                    disappointing!
+                                </p>
+                                <small class="text-muted">Posted by Anonymous</small>
+                                <hr>
+                                <p>Here is the Summer Tea Set ☕️by Espuma. To be honest, I am a bit disappointed for this tea set. Although it looked and presented well( with music as background when you opened the lunch box) , yet, the taste of the cake
+                                    and desserts weren’t really good. It’s more like a piece of kindergarten art work instead of desserts.
+                                </p>
+                                <small class="text-muted">Posted by Anonymous</small>
+                                <hr>
+                                <p>It’s a applewood smoked huge free range chicken! Not kidding, the size of the chicken is really huge! I thought we couldn’t finish it, but it was so tasty we finished all! The chicken meat is so soft and fully flavoured!
+                                    Even the chicken breast meat is soft! The flavour is rich in taste but not salty!</p>
+                                <small class="text-muted">Posted by Anonymous</small>
+                            </div>
                             <hr>
-                            <p>Here is the Summer Tea Set ☕️by Espuma. To be honest, I am a bit disappointed for this
-                                tea set. Although it looked and presented well( with music as background when you opened
-                                the lunch box) , yet, the taste of the cake and
-                                desserts weren’t really good. It’s more like a piece of kindergarten art work instead of
-                                desserts.
-                            </p>
-                            <small class="text-muted">Posted by Anonymous on 07/08/19</small>
-                            <hr>
-                            <p>It’s a applewood smoked huge free range chicken! Not kidding, the size of the chicken is
-                                really huge! I thought we couldn’t finish it, but it was so tasty we finished all! The
-                                chicken meat is so soft and fully flavoured! Even
-                                the chicken breast meat is soft! The flavour is rich in taste but not salty!</p>
-                            <small class="text-muted">Posted by Anonymous on 13/05/19</small>
-                            <hr>
-                            <a href="#" class="btn btn-success">Leave a Review</a>
+                            <button id="leaveReview" class="btn btn-success">Leave a Review</button>
+                            <br />
+                            <br />
+                            <div id="addReview" class="my-2">
+                                <label class='inputlbl'>Your Review</label><textarea class='form-control' row='4'></textarea><br />
+                                <div class='right'>
+                                    <input class='btn btn-outline-success' style='margin-right: 10px;' id='save' type='submit' value='Save'>
+                                    <input class='btn btn-outline-danger' id='reset' type='reset' value='Cancel'>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -112,26 +120,29 @@
     <script src="js/render.js"></script>
     <script src="js/restaurant.js"></script>
     <script>
-        const r = { id: "1001" };
-        $(document).ready(function () {
+        const r = {
+            id: "1001"
+        };
+        $(document).ready(function() {
             render.site.load();
-            $.getJSON("data/restaurant.json", function (data) {
+            $.getJSON("data/restaurant.json", function(data) {
                 const intro = render.card.create.el();
                 const info = data.filter(v => (v.id == r.id))[0];
                 $("#r-name").text(info.name)
-                render.card.set.title(intro,"Information of Restaurant");
-                render.card.set.content(intro,"<p><b>Type : "+info.type+"</b></p>"+"<b>Introduction:"+"</b>"+"<p>"+info.introduction+"</p>");
-                render.card.set.footer(intro,"");
-                intro.prepend($("<img src='image/"+info.banner+"' class='card-img-top img-fluid'>"));
+                render.card.set.title(intro, "Information of Restaurant");
+                render.card.set.content(intro, "<p><h5><label class='inputlbl'>Type : </label>  " + info.type + "</h5></p>" + "<label class='inputlbl'>Introduction:" + "</label>" + "<p>" + info.introduction + "</p>");
+                render.card.set.footer(intro, "");
+                intro.prepend($("<img src='image/" + info.banner + "' class='card-img-top img-fluid'>"));
                 intro.addClass("my-5");
                 $("#info").prepend(intro);
                 const menu = render.table.create.el();
                 const tmenu = render.table.create.el();
                 const m = data.filter(v => (v.id == r.id))[0].menu;
-                title = ["Name", "Type"];
+                const title = ["Name", "Type"];
+                const today = new Date();
                 render.table.set.title(menu, title);
                 render.table.set.title(tmenu, title);
-                render.table.set.content(menu, m.map(v => [v.name, v.type]));
+                render.table.set.content(menu, m.filter(v => (today >= new Date(v.date.start) && today <= new Date(v.date.end))).map(v => [v.name, v.type]));
                 render.table.set.content(tmenu, m.filter(v => (v.takeaway)).map(v => [v.name, v.type]));
                 $("#menu").append(menu);
                 $("#tmenu").append(tmenu);
