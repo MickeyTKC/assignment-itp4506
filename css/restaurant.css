@@ -28,3 +28,41 @@
 .coming-soon img {
     width: 100%;
 }
+
+.seaconal {
+    background-color: #FFCCBC;
+}
+
+.animate-seaconal {
+    animation: ASeasonal 6s infinite;
+}
+
+@keyframes ASeasonal {
+    0%,
+    100% {
+        background-color: #FFCC80;
+    }
+    50% {
+        background-color: #FFAB91;
+    }
+}
+
+.card-header {
+    background-color: #BBDEFB;
+}
+
+.card {
+    border: 1px solid #BBDEFB;
+}
+
+.table thead {
+    background-color: #FFE0B2;
+}
+
+.table {
+    border: 1px solid #FFE0B2;
+}
+
+tr:hover {
+    background-color: #FAE5D3;
+}

@@ -155,6 +155,7 @@
                     card.addClass("my-5")
                     $("#branches").append(card)
                 }
+                $([...$("#menu tr")].filter(v => ($($(v).find("td")[1]).text() == "Seasonal"))).addClass("seaconal animate-seaconal");
             })
         })
     </script>
