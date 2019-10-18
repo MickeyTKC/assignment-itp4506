@@ -23,18 +23,18 @@
                 </div>
                 <div class="card-body">
                     <div class="card text">
-                        <form id="r-filter">
+                        <div id="r-filter">
                             <div class="card-body">
                                 <div class="form-label-group my-2">
                                     <label class="form">Key Words</label>
-                                    <input id="r-name" class="form-control">
+                                    <input id="r-keys" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2" style="text-align: right;">
-                                    <a>More Details</a>
+                                    <div id="r-filter" class="btn btn-secondary r-100">Filter</div>
                                     <div id="r-search" class="btn btn-primary r-100">Search</div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,7 +52,9 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script>
-        var r;
+        function search(result, keywords) {
+            return result.filter(x => (x.name.toUpperCase().includes(keywords.toUpperCase()) || x.type.toUpperCase().includes(keywords.toUpperCase())))
+        }
         function display(result) {
             const cr = $("#card-result").find("#card-result-content").addClass("row"); //bind result card content
             if (result.length > 0) {
@@ -65,7 +67,7 @@
                     card.prepend($("<img src='image/" + v.banner + "' style='width:100%'>")); //prepend banner to card
                     render.card.set.title(card, v.name);
                     const content = $("<div>");
-                    content.append($("<p>").html("Type : <span>" + v.type+"</span"))
+                    content.append($("<p>").html("Type : <span>" + v.type + "</span"))
                     render.card.set.content(card, content);
                     render.card.set.footer(card, "")
                     cr.append(rc.append(card)); //add the card to the result card content
@@ -79,13 +81,23 @@
         }
         $(document).ready(function () {
             render.site.load();
-            function search(keys) {
-
-            }
-
+            //load resturant data
             $.getJSON("data/restaurant.json", (data) => {
                 display(data);
-                r = data;
+            })
+            //event
+            $("#r-search")
+                .click(() => {
+                    $.getJSON("data/restaurant.json", (data) => {
+                        display(search(data, $("#r-keys").val()));
+                    })
+                })
+            $(this).keypress((e) => {
+                if (e.key == "Enter") {
+                    $.getJSON("data/restaurant.json", (data) => {
+                        display(search(data, $("#r-keys").val()));
+                    })
+                }
             })
         })
     </script>
