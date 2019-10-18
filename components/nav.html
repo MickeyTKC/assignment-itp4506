@@ -19,10 +19,29 @@
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact</a>
         </li>
-        <li class="nav-item">
+        <li id="user" class="nav-item">
           <a class="nav-link"><img src="image/human.png" style="width: 10%;cursor: pointer;"></a>
         </li>
       </ul>
     </div>
   </div>
+  <script>
+    const visitor = localStorage.valueOf("user").length ? JSON.parse(localStorage.valueOf("user")) : { type: "walk-in" };
+    const nav = $("nav");
+    const user = localStorage["user"];
+    nav.find("#user").hover(
+      function () {
+        const list = render.list.create.el();
+        if (visitor.type = "walk-in") {
+          list.attr("style", "position:absolute;")
+          render.list.set.item(list, ["Login"]);
+          list.find(".list-group-item").attr("href","login.html")
+        }
+        nav.find("#user").append(list);
+        nav.find(".list-group-item").hover(function () { $(this).addClass("active") }, function () { $(this).removeClass("active") })
+      },
+      function () {
+        nav.find(".list-group").remove();
+      });
+  </script>
 </nav>
