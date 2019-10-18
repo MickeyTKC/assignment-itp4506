@@ -6,7 +6,8 @@ const login = {
         return $("#password").val();
     },
     default: () => {
-        const value = localStorage["remember"];
+        const value = Object.keys(localStorage).filter(v=>(v=="remember")).length?localStorage["remember"]:",";
+        console.log(value);
         $("#username").val(value.split(",")[0]);
         $("#password").val(value.split(",")[1]);
     },
@@ -16,10 +17,14 @@ const login = {
     signin: () => {
         $.getJSON("data/user.json", data => {
             for (i = 0; i < data.length; i++) {
-                if (data[0].username == login.username()) {
-                    if (data[0].password == login.password()) {
+                if (data[i].username == login.username()) {
+                    if (data[i].password == login.password()) {
                         login.message("success", "Sign in success !")
-                        login.remember();
+                        localStorage["user"] = JSON.stringify(data[i]);
+                        if(document.getElementById("cbRemember").checked){
+                            login.remember();
+                        }
+                        location="index.html"
                     } else {
                         login.message("danger", "Incorrect password !")
                     }
