@@ -91,6 +91,22 @@
     opacity: 1;
 }
 
+.hidebtn {
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 2em;
+    color: black;
+    font-size: 12px;
+    height: 24px;
+    width: 24px;
+    text-align: center;
+    opacity: 0.6;
+}
+
+.hidebtn:hover {
+    opacity: 1;
+}
+
 fieldset {
     border-radius: 10px;
     border: 1px solid grey;
@@ -105,4 +121,8 @@ fieldset:hover {
     border: 1px solid #03A9F4;
     cursor: pointer;
     box-shadow: 2px 2px 2px -1px #4FC3F7;
+}
+
+.hide {
+    background-color: grey !important;
 }

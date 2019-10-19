@@ -16,7 +16,7 @@ $(document).ready(function() {
                         "</td><td>" + data[i].menu[j].takeaway +
                         "</td><td>" + data[i].menu[j].date.start +
                         "</td><td>" + data[i].menu[j].date.end +
-                        "</td><td><button class='chgbtn'><strong>+</strong></button>&nbsp;<button class='delbtn'><strong>x</strong></button></td></tr>");
+                        "</td><td><button class='hidebtn'><strong>-</strong></button>&nbsp;<button class='chgbtn'><strong>+</strong></button>&nbsp;<button class='delbtn'><strong>x</strong></button></td></tr>");
                 }
                 break;
             }
@@ -28,6 +28,19 @@ $(document).ready(function() {
         $("#msave").css("display", "none");
         $("#mreset").css("display", "none");
         $("#menuForm").css("display", "none");
+
+        $(".hidebtn").click(function() {
+            const hiderow = [...$(this).parent().parent()];
+            console.log(hiderow);
+            if ($(hiderow).hasClass("hide")) {
+                $(hiderow).removeClass("hide");
+                $("tbody tr:nth-child(even)").addClass("table-success");
+                $("tbody tr:nth-child(odd)").addClass("table-warning");
+            } else {
+                $(hiderow).attr("class", "");
+                $(hiderow).addClass("hide");
+            }
+        });
 
         $("#reset").click(function() {
             $("#name").val(data[i].name);
