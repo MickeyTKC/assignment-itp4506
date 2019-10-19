@@ -134,11 +134,20 @@
                 render.card.set.footer(intro, "");
                 intro.prepend($("<img src='image/" + info.banner + "' class='card-img-top img-fluid'>"));
                 intro.addClass("my-5");
-                intro.append($("<button class='btn'>").css("background-color","#BBDEFB").text("Add to My Favorite").click(function () {
-                    const mb = $("<div class=\"animate-fading alert alert-success\" role=\"alert\" style='position: fixed;bottom:3rem;'>");
-                    mb.text("Added to My Favorite");
-                    $("body").append(mb)
-                    setTimeout(() => { $(".alert").remove() }, 10000);
+                intro.append($("<button class='btn heartbtn'>").html("<span class='heart' id='imgheart' aria-hidden='true'></span><label id='lblheart'>Add to My Favorite</label>").click(function() {
+                    // const mb = $("<div class=\"animate-fading alert alert-success\" role=\"alert\" style='position: fixed;bottom:3rem;'>");
+                    // mb.text("Added to My Favorite");
+                    // $("body").append(mb)
+                    // setTimeout(() => {
+                    //     $(".alert").remove()
+                    // }, 10000);
+                    $("#imgheart").animate({
+                        opacity: 1
+                    }, 1000);
+                    $("#lblheart").text("Added to My Favorite!!");
+                    $("#lblheart").animate({
+                        opacity: 1
+                    }, 1000);
                 }))
                 $("#info").prepend(intro);
                 const menu = render.table.create.el();

@@ -44,3 +44,53 @@ textarea {
     font-size: 14px;
     color: grey;
 }
+
+.heart {
+    background-color: red;
+    display: inline-block;
+    height: 10px;
+    margin: 0 5px;
+    position: relative;
+    top: 0;
+    transform: rotate(-45deg);
+    width: 10px;
+    opacity: 0.4;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    position: absolute;
+    width: 10px;
+}
+
+.heart:before {
+    top: -5px;
+    left: 0;
+}
+
+.heart:after {
+    left: 5px;
+    top: 0;
+}
+
+.heartbtn {
+    color: #AD1457;
+    background-color: #F6DDCC;
+}
+
+.heartbtn:hover {
+    color: #A04000;
+    background-color: #FFCCBC;
+}
+
+#lblheart {
+    opacity: 0.6;
+}
+
+#lblheart:hover {
+    cursor: pointer;
+}
