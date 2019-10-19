@@ -5,10 +5,30 @@
         "likes": ["1001", "1002"]
     },
     {
-        "username": "operator",
+        "username": "HelloWorld2",
+        "password": "password",
+        "type": "user",
+        "likes": ["1002", "1003"]
+    },
+    {
+        "username": "operator1",
         "password": "password",
         "type": "operator",
         "likes": ["1001"],
         "restaurant": "1001"
+    },
+    {
+        "username": "operator2",
+        "password": "password",
+        "type": "operator",
+        "likes": ["1002"],
+        "restaurant": "1002"
+    },
+    {
+        "username": "operator3",
+        "password": "password",
+        "type": "operator",
+        "likes": ["1003"],
+        "restaurant": "1003"
     }
 ]
