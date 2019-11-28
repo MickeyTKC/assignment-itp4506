@@ -28,12 +28,12 @@
     <!-- Page Content -->
     <div class="container-fluid">
         <div class="row no-gutter">
-            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-            <div class="col-md-8 col-lg-6">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image" id="bgimg"></div>
+            <div class="col-md-8 col-lg-6" id="flogin">
                 <div class="login d-flex align-items-center py-5">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-9 col-lg-8 mx-auto">
+                            <div class="col-md-9 col-lg-8 mx-auto" id="login">
                                 <h3 class="login-heading mb-4">Login - <span>Yummy Everywhere</span></h3>
                                 <form>
                                     <div class="form-label-group">
@@ -52,8 +52,44 @@
                                     </div>
                                     <a class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign in</a>
                                     <div class="text-center">
-                                        <a class="small" href="#" style="padding:5px 10px;">Sign up</a>
+                                        <a id="sigup" class="small" href="#" style="padding:5px 10px;">Sign up</a>
                                         <a class="small" href="#" style="padding:5px 10px;">Forgot password?</a>
+                                    </div><br />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-6" id="fsigup" style="display: none;">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4">Registration - <span>Yummy Everywhere</span></h3>
+                                <form>
+                                    <div class="form-label-group">
+                                        <input type="text" id="susername" class="form-control" placeholder="Username" required autofocus>
+                                        <label for="susername">Username</label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <input type="password" id="spassword" class="form-control" placeholder="Password" required>
+                                        <label for="spassword">Password</label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <input type="password" id="spassword2" class="form-control" placeholder="Confirm Password" required>
+                                        <label for="spassword2">Confirm Password</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="userAgree">
+                                        <label class="custom-control-label" for="userAgree">You must agree with the terms of agreements to continue.</label><br />
+                                        <a class="small" href="#" style="padding:5px 10px;">Agreements Here! Click Me! :3</a>
+                                    </div>
+                                    <a class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Sign up</a>
+                                    <div class="text-center">
+                                        <a id="back" class="small" href="#" style="padding:5px 10px;">Back</a>
                                     </div><br />
                                 </form>
                             </div>
@@ -78,6 +114,30 @@
             login.default();
             $(".btn").click(() => {
                 login.signin()
+            })
+            $("#sigup").click(()=>{
+                const bg = $("#bgimg");
+                const li = $("#flogin");
+                const su = $("#fsigup");
+                bg.animate({opacity:0},1000);
+                su.animate({opacity:0},1000);
+                li.animate({opacity:0},1000);
+                setTimeout(function(){ li.css("display","none");su.css("display","block");bg.before(su);}, 1000);
+                bg.animate({opacity:1},1000);
+                su.animate({opacity:1},1000);
+                li.animate({opacity:1},1000);
+            })
+            $("#back").click(()=>{
+                const bg = $("#bgimg");
+                const su = $("#fsigup");
+                const li = $("#flogin");
+                bg.animate({opacity:0},1000);
+                su.animate({opacity:0},1000);
+                li.animate({opacity:0},1000);
+                setTimeout(function(){ li.css("display","block");su.css("display","none");li.before(bg); }, 1000);
+                bg.animate({opacity:1},1000);
+                su.animate({opacity:1},1000);
+                li.animate({opacity:1},1000);
             })
         })
     </script>
