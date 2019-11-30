@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Restaurant System</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/core.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="main" class="container">
+        <!-- Header -->
+        <div id="header"></div>
+        <!-- Page Features -->
+        <div class="row" style="min-height: 100vh;">
+            <div class="my-5 col-lg-12"></div>
+            <div id="card-filter" class="card my-5 col-lg-12">
+                <div class="card-header">
+                    User's Profile
+                </div>
+                <div id="userinfo" class="card-body">
+                    <div class="card text">
+                        <div id="r-filter">
+                            <div class="card-body">
+                                <div class="form-label-group my-2">
+
+                                </div>
+                                <div id="username" class="form-label-group my-2">
+                                    Username:operator1
+                                    <div id="btn-edit" class="btn btn-secondary"
+                                        style="text-align: right;cursor: pointer;padding:0px 10px;">Edit</div>
+                                </div>
+                                <div id="icon" class="form-label-group my-2">
+                                    <img src="" class="col-lg-2 col-mg-4 col-sm-8" style="width:200px;height:200px;">
+                                </div>
+                                <div id="alias" class="form-label-group my-2">
+                                    Alias:Peter
+                                </div>
+                                <div id="description" class="form-label-group my-2">
+                                    Description:
+                                    <div class="card-body" style="border:1px solid #ddd;">
+                                        I go to school by bus
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="editinfo" class="card-body" style="display:none">
+                    <div class="card text">
+                        <div id="r-filter">
+                            <div class="card-body">
+                                <div class="form-label-group my-2">
+                                    <label class="form inputlbl">Alias</label>
+                                    <input type="password" id="r-keys" class="form-control">
+                                </div>
+                                <div class="form-label-group my-2">
+                                    <label class="form inputlbl">Password</label>
+                                    <input type="password" id="r-keys" class="form-control">
+                                </div>
+                                <div class="form-label-group my-2">
+                                    <label class="form inputlbl">Description</label>
+                                    <textarea type="password" id="r-keys" class="form-control" rows="4"></textarea>
+                                </div>
+                                <div class="form-label-group my-2">
+                                    <label class="form inputlbl">Icon:</label>
+                                    <br/>
+                                    <input>
+                                </div>
+                                <div class="form-label-group my-2" style="text-align: right;">
+                                    <div id="btn-reset" class="btn btn-secondary r-100">Reset</div>
+                                    <div id="btn-cancel" class="btn btn-danger r-100">Cancel</div>
+                                    <div id="btn-submit" class="btn btn-primary r-100">Submit</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/render.js"></script>
+    <script>
+        $(document).ready(function () {
+            render.site.load();
+            $("#btn-edit").click(()=>{
+                $("#userinfo").css("display","none")
+                $("#editinfo").css("display","block")
+                //get user data
+            })
+            $("#btn-cancel").click(()=>{
+                $("#userinfo").css("display","block")
+                $("#editinfo").css("display","none")
+            })
+           
+        })
+    </script>
+</body>
+
+</html>
