@@ -45,11 +45,11 @@
             <div class="col-lg-9">
                 <div id="nuser" class="views">
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">
+                        <div class="card-header" ondragover="allowDrop(event)" ondrop="drop(event)">
                             Normal User
                             <img src="image/addUser24px.png" id="nuserAddbtn" class="addUserbtn" />
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
                     </div>
@@ -57,11 +57,11 @@
                 <br />
                 <div id="opera" class="views">
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">
+                        <div class="card-header" ondragover="allowDrop(event)" ondrop="drop(event)">
                             Operator
                             <img src="image/addUser24px.png" id="operaAddbtn" class="addUserbtn" />
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
                     </div>
@@ -69,11 +69,11 @@
                 <br />
                 <div id="admin" class="views">
                     <div class="card card-outline-secondary my-4">
-                        <div class="card-header">
+                        <div class="card-header" ondragover="allowDrop(event)" ondrop="drop(event)">
                             Administrator
                             <img src="image/addUser24px.png" id="adminAddbtn" class="addUserbtn" />
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
 
@@ -153,6 +153,9 @@
             var data = ev.dataTransfer.getData("pre");
             if ($(ev.target).hasClass("data")) {
                 ev.target.parentElement.appendChild(document.getElementById(data));
+            }
+            else if($(ev.target).hasClass("card-body")||$(ev.target).hasClass("card-header")){
+                $(ev.target).parent().find(".form-label-group").append(document.getElementById(data))
             }
             else {
                 ev.target.appendChild(document.getElementById(data));
