@@ -96,32 +96,63 @@
         $(document).ready(function() {
             $("#header").load("components/nav.html");
             $("#footer").load("components/footer.html");
-            const existingUsers = {user:[],operator:[],admin:[]};
-            const createRow=(user)=>{
-                const row = $("<pre id='"+user.username+"'class='data'>");
-                const alias = " <label class='inputlbl'>"+user.alias+"</label>";
+
+            var divs = document.getElementsByClassName("form-label-group");
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].setAttribute("ondrop", "drop(event)");
+                divs[i].setAttribute("ondragover", "allowDrop(event)");
+            }
+
+            const existingUsers = {
+                user: [],
+                operator: [],
+                admin: []
+            };
+            const createRow = (user) => {
+                const row = $("<pre id='" + user.username + "'class='data' draggable='true' ondragstart='drag(event)'>");
+                const alias = " <label class='inputlbl'>" + user.alias + "</label>";
                 const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn' />"
-                row.html(user.username+"\t"+user.password+"\t"+alias+action);
+                row.html(user.username + "\t" + user.password + "\t" + alias + action);
                 return row;
             }
-            $.getJSON("data/user.json",(data)=>{
-                existingUsers.user=data.filter((v)=>{return (v.type=="user")})
-                existingUsers.operator=data.filter((v)=>{return (v.type=="operator")})
-                existingUsers.admin=data.filter((v)=>{return (v.type=="admin")})
+            $.getJSON("data/user.json", (data) => {
+                existingUsers.user = data.filter((v) => {
+                    return (v.type == "user")
+                })
+                existingUsers.operator = data.filter((v) => {
+                    return (v.type == "operator")
+                })
+                existingUsers.admin = data.filter((v) => {
+                    return (v.type == "admin")
+                })
 
-                existingUsers.user.forEach(v=>{
+                existingUsers.user.forEach(v => {
                     $($(".card")[0]).find(".form-label-group").append(createRow(v))
                 })
 
-                existingUsers.operator.forEach(v=>{
+                existingUsers.operator.forEach(v => {
                     $($(".card")[1]).find(".form-label-group").append(createRow(v))
                 })
 
-                existingUsers.admin.forEach(v=>{
+                existingUsers.admin.forEach(v => {
                     $($(".card")[2]).find(".form-label-group").append(createRow(v))
                 })
             })
         })
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("pre", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("pre");
+            ev.target.appendChild(document.getElementById(data));
+        }
     </script>
 </body>
 
