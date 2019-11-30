@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Admin Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+    <link href="css/admin.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div id="header"></div>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h2 id="rTitle" class="my-4">Existing Users <label class="labelUserType"> - Admin</label></h2>
+                <div class="list-group">
+                    <a href="#nuser" name="navNuser" class="list-group-item">Normal User</a>
+                    <a href="#opera" name="navOpera" class="list-group-item">Operator</a>
+                    <a href="#admin" name="navAdmin" class="list-group-item">Administrator </a>
+                </div>
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+                <div id="nuser" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Normal User
+                            <img src="image/addUser24px.png" id="nuserAddbtn" class="addUserbtn" />
+                        </div>
+                        <div class="card-body">
+                            <div class='form-label-group'>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="opera" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Operator
+                            <img src="image/addUser24px.png" id="operaAddbtn" class="addUserbtn" />
+                        </div>
+                        <div class="card-body">
+                            <div class='form-label-group'>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div id="admin" class="views">
+                    <div class="card card-outline-secondary my-4">
+                        <div class="card-header">
+                            Administrator
+                            <img src="image/addUser24px.png" id="adminAddbtn" class="addUserbtn" />
+                        </div>
+                        <div class="card-body">
+                            <div class='form-label-group'>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/render.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#header").load("components/nav.html");
+            $("#footer").load("components/footer.html");
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+@import url("operation.css");
+.addUserbtn {
+    float: right;
+}
+
+#nuser .card-header {
+    background-color: #C8E6C9;
+    color: #2E7D32;
+}
+
+#nuser .card {
+    border: 1px solid #C8E6C9;
+}
+
+#opera .card-header {
+    background-color: #B2EBF2;
+    color: #00838F;
+}
+
+#opera .card {
+    border: 1px solid #B2EBF2;
+}
+
+#admin .card-header {
+    background-color: #BBDEFB;
+    color: #1565C0;
+}
+
+#admin .card {
+    border: 1px solid #BBDEFB;
+}
+
+.data {
+    font-size: 16px;
+}
+
+.data:hover {
+    font-size: 17px;
+}
+
+#nuser .data:hover {
+    background-color: #F1F8E9;
+    color: #004D40;
+}
+
+#opera .data:hover {
+    background-color: #E0F2F1;
+    color: #01579B;
+}
+
+#admin .data:hover {
+    background-color: #E1F5FE;
+    color: #1A237E;
+}
+
+.databtn {
+    float: right;
+    margin-right: 15px;
+}
