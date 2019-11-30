@@ -34,6 +34,6 @@
     {
         "username": "admin1",
         "password": "password",
-        "type": "admin",
+        "type": "admin"
     }
 ]
