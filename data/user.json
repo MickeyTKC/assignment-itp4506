@@ -1,18 +1,24 @@
 [{
         "username": "HelloWorld",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "user",
         "likes": ["1001", "1002"]
     },
     {
         "username": "HelloWorld2",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "user",
         "likes": ["1002", "1003"]
     },
     {
         "username": "operator1",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "operator",
         "likes": ["1001"],
         "restaurant": "1001"
@@ -20,6 +26,8 @@
     {
         "username": "operator2",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "operator",
         "likes": ["1002"],
         "restaurant": "1002"
@@ -27,6 +35,8 @@
     {
         "username": "operator3",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "operator",
         "likes": ["1003"],
         "restaurant": "1003"
@@ -34,6 +44,8 @@
     {
         "username": "admin1",
         "password": "password",
+        "alias":"Alias",
+        "description":"Description of User",
         "type": "admin"
     }
 ]
