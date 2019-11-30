@@ -30,7 +30,7 @@
 
                                 </div>
                                 <div id="username" class="form-label-group my-2">
-                                    Username:operator1
+                                    Username:<span>operator</span>
                                     <div id="btn-edit" class="btn btn-secondary"
                                         style="text-align: right;cursor: pointer;padding:0px 10px;">Edit</div>
                                 </div>
@@ -38,7 +38,7 @@
                                     <img src="" class="col-lg-2 col-mg-4 col-sm-8" style="width:200px;height:200px;">
                                 </div>
                                 <div id="alias" class="form-label-group my-2">
-                                    Alias:Peter
+                                    Alias:<span>Peter</span>
                                 </div>
                                 <div id="description" class="form-label-group my-2">
                                     Description:
@@ -56,20 +56,20 @@
                             <div class="card-body">
                                 <div class="form-label-group my-2">
                                     <label class="form inputlbl">Alias</label>
-                                    <input type="password" id="r-keys" class="form-control">
+                                    <input type="text" id="alias" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2">
                                     <label class="form inputlbl">Password</label>
-                                    <input type="password" id="r-keys" class="form-control">
+                                    <input type="password" id="password" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2">
                                     <label class="form inputlbl">Description</label>
-                                    <textarea type="password" id="r-keys" class="form-control" rows="4"></textarea>
+                                    <textarea id="description" class="form-control" rows="4"></textarea>
                                 </div>
                                 <div class="form-label-group my-2">
                                     <label class="form inputlbl">Icon:</label>
-                                    <br/>
-                                    <input>
+                                    <br />
+                                    <input name="icon" type="file" accept="image/*">
                                 </div>
                                 <div class="form-label-group my-2" style="text-align: right;">
                                     <div id="btn-reset" class="btn btn-secondary r-100">Reset</div>
@@ -91,16 +91,30 @@
     <script>
         $(document).ready(function () {
             render.site.load();
-            $("#btn-edit").click(()=>{
-                $("#userinfo").css("display","none")
-                $("#editinfo").css("display","block")
-                //get user data
+            const user = JSON.parse(localStorage["user"]);
+            const uinfo = $("#userinfo");
+            uinfo.find("#username").find("span").text(user.username)
+            uinfo.find("#alias").find("span").text(user.alias)
+            uinfo.find("#description").find("div").text(user.description)
+            function toEditUser() {
+                const e = $("#editinfo")
+                e.find("#alias").val(user.alias)
+                e.find("#password").val(user.password)
+                e.find("#description").val(user.description)
+            }
+            $("#btn-edit").click(() => {
+                $("#userinfo").css("display", "none")
+                $("#editinfo").css("display", "block")
+                toEditUser();
             })
-            $("#btn-cancel").click(()=>{
-                $("#userinfo").css("display","block")
-                $("#editinfo").css("display","none")
+            $("#btn-reset").click(()=>{
+                toEditUser();
             })
-           
+            $("#btn-cancel").click(() => {
+                $("#userinfo").css("display", "block")
+                $("#editinfo").css("display", "none")
+            })
+
         })
     </script>
 </body>
