@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <title>Restaurant System</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/core.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,21 +29,33 @@
                                 <div class="form-label-group my-2">
 
                                 </div>
-                                <div id="username" class="form-label-group my-2">
-                                    Username:<span>operator</span>
-                                    <div id="btn-edit" class="btn btn-secondary"
-                                        style="text-align: right;cursor: pointer;padding:0px 10px;">Edit</div>
+                                <div id="type" class="form-label-group my-2">
+                                    <span>UserType</span>
                                 </div>
-                                <div id="icon" class="form-label-group my-2">
-                                    <img src="" class="col-lg-2 col-mg-4 col-sm-8" style="width:200px;height:200px;">
-                                </div>
-                                <div id="alias" class="form-label-group my-2">
-                                    Alias:<span>Peter</span>
-                                </div>
-                                <div id="description" class="form-label-group my-2">
-                                    Description:
-                                    <div class="card-body" style="border:1px solid #ddd;">
-                                        I go to school by bus
+                                <div id="btn-edit" class="btn btn-secondary" style="text-align: right;cursor: pointer;padding:0px 10px;float: right;">Edit</div>
+                                <div class="form-label-group">
+                                    <div id="icon" class="form-label-group my-2" style="display:inline-block;">
+                                        <img src="" class="col-lg-2 col-mg-4 col-sm-8" style="width:200px;height:200px;">
+                                    </div>
+                                    <div class="form-label-group my-2" style="display:inline-block;margin-left: 40px;">
+                                        <p>
+                                            <div id="username" class="form-label-group">
+                                                <label class="lbl">Username:</label>
+                                                <span>operator</span>
+                                            </div>
+                                        </p>
+                                        <p>
+                                            <div id="alias" class="form-label-group">
+                                                <label class="lbl">Alias:</label>
+                                                <span>Peter</span>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <div id="description" class="form-label-group">
+                                        <label class="lbl">Description:</label>
+                                        <div class="card-body" style="border:1px solid #ddd;">
+                                            I go to school by bus
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -55,19 +67,19 @@
                         <div id="r-filter">
                             <div class="card-body">
                                 <div class="form-label-group my-2">
-                                    <label class="form inputlbl">Alias</label>
+                                    <label class="form lbl">Alias</label>
                                     <input type="text" id="alias" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2">
-                                    <label class="form inputlbl">Password</label>
+                                    <label class="form lbl">Password</label>
                                     <input type="password" id="password" class="form-control">
                                 </div>
                                 <div class="form-label-group my-2">
-                                    <label class="form inputlbl">Description</label>
+                                    <label class="form lbl">Description</label>
                                     <textarea id="description" class="form-control" rows="4"></textarea>
                                 </div>
                                 <div class="form-label-group my-2">
-                                    <label class="form inputlbl">Icon:</label>
+                                    <label class="form lbl">Icon:</label>
                                     <br />
                                     <input name="icon" type="file" accept="image/*">
                                 </div>
@@ -89,13 +101,15 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             render.site.load();
             const user = JSON.parse(localStorage["user"]);
             const uinfo = $("#userinfo");
+            uinfo.find("#type").find("span").text(user.type.toUpperCase())
             uinfo.find("#username").find("span").text(user.username)
             uinfo.find("#alias").find("span").text(user.alias)
             uinfo.find("#description").find("div").text(user.description)
+
             function toEditUser() {
                 const e = $("#editinfo")
                 e.find("#alias").val(user.alias)
@@ -107,7 +121,7 @@
                 $("#editinfo").css("display", "block")
                 toEditUser();
             })
-            $("#btn-reset").click(()=>{
+            $("#btn-reset").click(() => {
                 toEditUser();
             })
             $("#btn-cancel").click(() => {
