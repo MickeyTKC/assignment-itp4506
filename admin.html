@@ -50,10 +50,7 @@
                             <img src="image/addUser24px.png" id="nuserAddbtn" class="addUserbtn" />
                         </div>
                         <div class="card-body">
-                            <div class='form-label-group'>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                            </div>
+                            <div class='form-label-group'></div>
                         </div>
                     </div>
                 </div>
@@ -65,10 +62,7 @@
                             <img src="image/addUser24px.png" id="operaAddbtn" class="addUserbtn" />
                         </div>
                         <div class="card-body">
-                            <div class='form-label-group'>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                            </div>
+                            <div class='form-label-group'></div>
                         </div>
                     </div>
                 </div>
@@ -80,10 +74,7 @@
                             <img src="image/addUser24px.png" id="adminAddbtn" class="addUserbtn" />
                         </div>
                         <div class="card-body">
-                            <div class='form-label-group'>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                                <pre class="data">username      password      <label class="inputlbl">alias</label><img src="image/del24px.png" class="databtn" /><img src="image/edit24px.png" class="databtn" /></pre>
-                            </div>
+                            <div class='form-label-group'></div>
                         </div>
 
                     </div>
@@ -105,6 +96,31 @@
         $(document).ready(function() {
             $("#header").load("components/nav.html");
             $("#footer").load("components/footer.html");
+            const existingUsers = {user:[],operator:[],admin:[]};
+            const createRow=(user)=>{
+                const row = $("<pre id='"+user.username+"'class='data'>");
+                const alias = " <label class='inputlbl'>"+user.alias+"</label>";
+                const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn' />"
+                row.html(user.username+"\t"+user.password+"\t"+alias+action);
+                return row;
+            }
+            $.getJSON("data/user.json",(data)=>{
+                existingUsers.user=data.filter((v)=>{return (v.type=="user")})
+                existingUsers.operator=data.filter((v)=>{return (v.type=="operator")})
+                existingUsers.admin=data.filter((v)=>{return (v.type=="admin")})
+
+                existingUsers.user.forEach(v=>{
+                    $($(".card")[0]).find(".form-label-group").append(createRow(v))
+                })
+
+                existingUsers.operator.forEach(v=>{
+                    $($(".card")[1]).find(".form-label-group").append(createRow(v))
+                })
+
+                existingUsers.admin.forEach(v=>{
+                    $($(".card")[2]).find(".form-label-group").append(createRow(v))
+                })
+            })
         })
     </script>
 </body>
