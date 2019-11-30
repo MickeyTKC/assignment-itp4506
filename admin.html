@@ -79,6 +79,10 @@
 
                     </div>
                 </div>
+                <div id="action" style="position: fixed;bottom:2em;right:2em;">
+                    <div id="btn-reset" class="btn btn-danger">Reset</div>
+                    <div id="btn-save" class="btn btn-primary">Save</div>
+                </div>
             </div>
         </div>
 
@@ -113,6 +117,7 @@
                 const alias = " <label class='inputlbl'>" + user.alias + "</label>";
                 const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn' />"
                 row.html(user.username + "\t" + user.password + "\t" + alias + action);
+                $(row.find("img")[0]).click(function(){$(this).parent().fadeOut()})
                 return row;
             }
             $.getJSON("data/user.json", (data) => {
@@ -138,6 +143,31 @@
                     $($(".card")[2]).find(".form-label-group").append(createRow(v))
                 })
             })
+            $("#btn-reset").click(() => {
+                $.getJSON("data/user.json", (data) => {
+                    $(".card").find(".form-label-group").html("");
+                    existingUsers.user = data.filter((v) => {
+                        return (v.type == "user")
+                    })
+                    existingUsers.operator = data.filter((v) => {
+                        return (v.type == "operator")
+                    })
+                    existingUsers.admin = data.filter((v) => {
+                        return (v.type == "admin")
+                    })
+                    existingUsers.user.forEach(v => {
+                        $($(".card")[0]).find(".form-label-group").append(createRow(v))
+                    })
+
+                    existingUsers.operator.forEach(v => {
+                        $($(".card")[1]).find(".form-label-group").append(createRow(v))
+                    })
+
+                    existingUsers.admin.forEach(v => {
+                        $($(".card")[2]).find(".form-label-group").append(createRow(v))
+                    })
+                })
+            })
         })
 
         function allowDrop(ev) {
@@ -154,7 +184,7 @@
             if ($(ev.target).hasClass("data")) {
                 ev.target.parentElement.appendChild(document.getElementById(data));
             }
-            else if($(ev.target).hasClass("card-body")||$(ev.target).hasClass("card-header")){
+            else if ($(ev.target).hasClass("card-body") || $(ev.target).hasClass("card-header")) {
                 $(ev.target).parent().find(".form-label-group").append(document.getElementById(data))
             }
             else {
