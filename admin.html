@@ -93,7 +93,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#header").load("components/nav.html");
             $("#footer").load("components/footer.html");
 
@@ -151,7 +151,12 @@
         function drop(ev) {
             ev.preventDefault();
             var data = ev.dataTransfer.getData("pre");
-            ev.target.appendChild(document.getElementById(data));
+            if ($(ev.target).hasClass("data")) {
+                ev.target.parentElement.appendChild(document.getElementById(data));
+            }
+            else {
+                ev.target.appendChild(document.getElementById(data));
+            }
         }
     </script>
 </body>
