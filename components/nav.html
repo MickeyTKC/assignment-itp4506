@@ -39,23 +39,26 @@
         }
         else if(visitor.type == "user"){
           list.attr("style", "position:absolute;")
-          render.list.set.item(list, ["My Favorite","Logout"]);
+          render.list.set.item(list, ["My Favorite","Profile","Logout"]);
           $(list.find(".list-group-item")[0]).attr("href", "favorite.html")
-          $(list.find(".list-group-item")[1]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
+          $(list.find(".list-group-item")[1]).attr("href", "profile.html")
+          $(list.find(".list-group-item")[2]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
         }
         else if(visitor.type == "operator"){
           list.attr("style", "position:absolute;")
-          render.list.set.item(list, ["My Favorite","Manage Restaurant","Logout"]);
+          render.list.set.item(list, ["My Favorite","Profile","Manage Restaurant","Logout"]);
           $(list.find(".list-group-item")[0]).attr("href", "favorite.html")
-          $(list.find(".list-group-item")[1]).attr("href", "operation.html")
-          $(list.find(".list-group-item")[2]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
+          $(list.find(".list-group-item")[1]).attr("href", "profile.html")
+          $(list.find(".list-group-item")[2]).attr("href", "operation.html")
+          $(list.find(".list-group-item")[3]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
         }
         else if(visitor.type == "admin"){
           list.attr("style", "position:absolute;")
-          render.list.set.item(list, ["My Favorite","Manage User","Logout"]);
+          render.list.set.item(list, ["My Favorite","Profile","Manage User","Logout"]);
           $(list.find(".list-group-item")[0]).attr("href", "favorite.html")
-          $(list.find(".list-group-item")[1]).attr("href", "admin.html")
-          $(list.find(".list-group-item")[2]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
+          $(list.find(".list-group-item")[1]).attr("href", "profile.html")
+          $(list.find(".list-group-item")[2]).attr("href", "admin.html")
+          $(list.find(".list-group-item")[3]).attr({"style":"cursor:pointer;","href":"login.html"}).click(()=>{localStorage["user"]=JSON.stringify({ type: "walk-in" });})
         }
         nav.find("#user").append(list);
         nav.find(".list-group-item").hover(function () { $(this).addClass("active") }, function () { $(this).removeClass("active") })
