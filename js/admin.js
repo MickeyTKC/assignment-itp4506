@@ -81,8 +81,12 @@ $(document).ready(function() {
             nuserInputClear();
         })
         $("#nusersave").click(() => {
-            $($(".card")[0]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
-                $("#nusernametxt").val() + "\t" + $("#npasswordtxt").val() + "\t<label class='inputlbl'>" + $("#naliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+            const user = {
+                username: $("#nusernametxt").val(),
+                password:$("#npasswordtxt").val(),
+                alias:$("#naliastxt").val(),
+            };
+            $($(".card")[0]).find(".form-label-group").append(createRow(user));
             nuserInputClear();
             $("#nuserForm").css("display", "none");
         })
@@ -96,8 +100,14 @@ $(document).ready(function() {
             operaInputClear();
         })
         $("#operasave").click(() => {
-            $($(".card")[1]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
-                $("#ousernametxt").val() + "\t" + $("#opasswordtxt").val() + "\t<label class='inputlbl'>" + $("#oaliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+            const user = {
+                username: $("#ousernametxt").val(),
+                password:$("#opasswordtxt").val(),
+                alias:$("#oaliastxt").val(),
+            };
+            $($(".card")[1]).find(".form-label-group").append(createRow(user));
+            nuserInputClear();
+            $("#nuserForm").css("display", "none");
             operaInputClear();
             $("#operaForm").css("display", "none");
         })
@@ -111,8 +121,14 @@ $(document).ready(function() {
             adminInputClear();
         })
         $("#adminsave").click(() => {
-            $($(".card")[2]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
-                $("#ausernametxt").val() + "\t" + $("#apasswordtxt").val() + "\t<label class='inputlbl'>" + $("#aaliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+            const user = {
+                username: $("#ausernametxt").val(),
+                password:$("#apasswordtxt").val(),
+                alias:$("#aaliastxt").val(),
+            };
+            $($(".card")[2]).find(".form-label-group").append(createRow(user));
+            nuserInputClear();
+            $("#nuserForm").css("display", "none");
             adminInputClear();
             $("#adminForm").css("display", "none");
         })
