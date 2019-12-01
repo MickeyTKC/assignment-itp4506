@@ -33,7 +33,7 @@
         <div class="row">
 
             <div class="col-lg-3">
-                <h2 id="rTitle" class="my-4">Existing Users <label class="labelUserType"> - Admin</label></h2>
+                <h2 id="rTitle" class="my-4">Existing Users <label class="labelUserType"> - ADMIN</label></h2>
                 <div class="list-group">
                     <a href="#nuser" name="navNuser" class="list-group-item">Normal User</a>
                     <a href="#opera" name="navOpera" class="list-group-item">Operator</a>
@@ -49,6 +49,23 @@
                             Normal User
                             <img src="image/addUser24px.png" id="nuserAddbtn" class="addUserbtn" />
                         </div>
+                        <form id="nuserForm">
+                            <div style="margin: 20px;">
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="nusernametxt" placeholder="UserName" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="npasswordtxt" placeholder="Password" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="naliastxt" placeholder="Alias" />
+                                </div>
+                                <div style="float: right;">
+                                    <input class="btn btn-outline-success" id="nusersave" type="submit" value="Save">
+                                    <input class="btn btn-outline-danger" id="nuserclose" type="reset" value="Close">
+                                </div>
+                            </div>
+                        </form>
                         <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
@@ -61,9 +78,27 @@
                             Operator
                             <img src="image/addUser24px.png" id="operaAddbtn" class="addUserbtn" />
                         </div>
+                        <form id="operaForm">
+                            <div style="margin: 20px;">
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="ousernametxt" placeholder="UserName" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="opasswordtxt" placeholder="Password" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="oaliastxt" placeholder="Alias" />
+                                </div>
+                                <div style="float: right;">
+                                    <input class="btn btn-outline-success" id="operasave" type="submit" value="Save">
+                                    <input class="btn btn-outline-danger" id="operaclose" type="reset" value="Close">
+                                </div>
+                            </div>
+                        </form>
                         <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
+
                     </div>
                 </div>
                 <br />
@@ -73,10 +108,26 @@
                             Administrator
                             <img src="image/addUser24px.png" id="adminAddbtn" class="addUserbtn" />
                         </div>
+                        <form id="adminForm">
+                            <div style="margin: 20px;">
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="ausernametxt" placeholder="UserName" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="apasswordtxt" placeholder="Password" />
+                                </div>
+                                <div class="my-2" style="display:inline-block;">
+                                    <input type="text" id="aaliastxt" placeholder="Alias" />
+                                </div>
+                                <div style="float: right;">
+                                    <input class="btn btn-outline-success" id="adminsave" type="submit" value="Save">
+                                    <input class="btn btn-outline-danger" id="adminclose" type="reset" value="Close">
+                                </div>
+                            </div>
+                        </form>
                         <div class="card-body" ondragover="allowDrop(event)" ondrop="drop(event)">
                             <div class='form-label-group'></div>
                         </div>
-
                     </div>
                 </div>
                 <div id="action" style="position: fixed;bottom:2em;right:2em;">
@@ -97,55 +148,32 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script>
-        $(document).ready(function () {
-            $("#header").load("components/nav.html");
-            $("#footer").load("components/footer.html");
+        $(document).ready(function() {
+                $("#header").load("components/nav.html");
+                $("#footer").load("components/footer.html");
 
-            var divs = document.getElementsByClassName("form-label-group");
-            for (var i = 0; i < divs.length; i++) {
-                divs[i].setAttribute("ondrop", "drop(event)");
-                divs[i].setAttribute("ondragover", "allowDrop(event)");
-            }
+                var divs = document.getElementsByClassName("form-label-group");
+                for (var i = 0; i < divs.length; i++) {
+                    divs[i].setAttribute("ondrop", "drop(event)");
+                    divs[i].setAttribute("ondragover", "allowDrop(event)");
+                }
 
-            const existingUsers = {
-                user: [],
-                operator: [],
-                admin: []
-            };
-            const createRow = (user) => {
-                const row = $("<pre id='" + user.username + "'class='data' draggable='true' ondragstart='drag(event)'>");
-                const alias = " <label class='inputlbl'>" + user.alias + "</label>";
-                const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn' />"
-                row.html(user.username + "\t" + user.password + "\t" + alias + action);
-                $(row.find("img")[0]).click(function(){$(this).parent().fadeOut()})
-                return row;
-            }
-            $.getJSON("data/user.json", (data) => {
-                existingUsers.user = data.filter((v) => {
-                    return (v.type == "user")
-                })
-                existingUsers.operator = data.filter((v) => {
-                    return (v.type == "operator")
-                })
-                existingUsers.admin = data.filter((v) => {
-                    return (v.type == "admin")
-                })
-
-                existingUsers.user.forEach(v => {
-                    $($(".card")[0]).find(".form-label-group").append(createRow(v))
-                })
-
-                existingUsers.operator.forEach(v => {
-                    $($(".card")[1]).find(".form-label-group").append(createRow(v))
-                })
-
-                existingUsers.admin.forEach(v => {
-                    $($(".card")[2]).find(".form-label-group").append(createRow(v))
-                })
-            })
-            $("#btn-reset").click(() => {
+                const existingUsers = {
+                    user: [],
+                    operator: [],
+                    admin: []
+                };
+                const createRow = (user) => {
+                    const row = $("<pre id='" + user.username + "'class='data' draggable='true' ondragstart='drag(event)'>");
+                    const alias = " <label class='inputlbl'>" + user.alias + "</label>";
+                    const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' />"
+                    row.html(user.username + "\t" + user.password + "\t" + alias + action);
+                    $(row.find("img")[0]).click(function() {
+                        $(this).parent().fadeOut()
+                    })
+                    return row;
+                }
                 $.getJSON("data/user.json", (data) => {
-                    $(".card").find(".form-label-group").html("");
                     existingUsers.user = data.filter((v) => {
                         return (v.type == "user")
                     })
@@ -155,6 +183,7 @@
                     existingUsers.admin = data.filter((v) => {
                         return (v.type == "admin")
                     })
+
                     existingUsers.user.forEach(v => {
                         $($(".card")[0]).find(".form-label-group").append(createRow(v))
                     })
@@ -167,8 +196,99 @@
                         $($(".card")[2]).find(".form-label-group").append(createRow(v))
                     })
                 })
-            })
-        })
+                $("#btn-reset").click(() => {
+                    $.getJSON("data/user.json", (data) => {
+                        $(".card").find(".form-label-group").html("");
+                        existingUsers.user = data.filter((v) => {
+                            return (v.type == "user")
+                        })
+                        existingUsers.operator = data.filter((v) => {
+                            return (v.type == "operator")
+                        })
+                        existingUsers.admin = data.filter((v) => {
+                            return (v.type == "admin")
+                        })
+                        existingUsers.user.forEach(v => {
+                            $($(".card")[0]).find(".form-label-group").append(createRow(v))
+                        })
+
+                        existingUsers.operator.forEach(v => {
+                            $($(".card")[1]).find(".form-label-group").append(createRow(v))
+                        })
+
+                        existingUsers.admin.forEach(v => {
+                            $($(".card")[2]).find(".form-label-group").append(createRow(v))
+                        })
+                    })
+                })
+
+                $("#nuserForm").css("display", "none");
+                $("#nuserAddbtn").click(() => {
+                    $("#nuserForm").css("display", "inline");
+                })
+                $("#nuserclose").click(() => {
+                    $("#nuserForm").css("display", "none");
+                    nuserInputClear();
+                })
+                $("#nusersave").click(() => {
+                    $($(".card")[0]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
+                        $("#nusernametxt").val() + "\t" + $("#npasswordtxt").val() + "\t<label class='inputlbl'>" + $("#naliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+                    nuserInputClear();
+                    $("#nuserForm").css("display", "none");
+                })
+
+                $("#operaForm").css("display", "none");
+                $("#operaAddbtn").click(() => {
+                    $("#operaForm").css("display", "inline");
+                })
+                $("#operaclose").click(() => {
+                    $("#operaForm").css("display", "none");
+                    operaInputClear();
+                })
+                $("#operasave").click(() => {
+                    $($(".card")[1]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
+                        $("#ousernametxt").val() + "\t" + $("#opasswordtxt").val() + "\t<label class='inputlbl'>" + $("#oaliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+                    operaInputClear();
+                    $("#operaForm").css("display", "none");
+                })
+
+                $("#adminForm").css("display", "none");
+                $("#adminAddbtn").click(() => {
+                    $("#adminForm").css("display", "inline");
+                })
+                $("#adminclose").click(() => {
+                    $("#adminForm").css("display", "none");
+                    adminInputClear();
+                })
+                $("#adminsave").click(() => {
+                    $($(".card")[2]).find(".form-label-group").append("<pre class='data' draggable='true' ondragstart='drag(event)'>" +
+                        $("#ausernametxt").val() + "\t" + $("#apasswordtxt").val() + "\t<label class='inputlbl'>" + $("#aaliastxt").val() + "</label> <img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' /></pre>");
+                    adminInputClear();
+                    $("#adminForm").css("display", "none");
+                })
+
+                $(".editbtn").click(() => {
+
+                })
+            }) //ready
+
+        function nuserInputClear() {
+            $("#nusernametxt").val("");
+            $("#npasswordtxt").val("");
+            $("#naliastxt").val("");
+        }
+
+        function operaInputClear() {
+            $("#ousernametxt").val("");
+            $("#opasswordtxt").val("");
+            $("#oaliastxt").val("");
+        }
+
+        function adminInputClear() {
+            $("#ausernametxt").val("");
+            $("#apasswordtxt").val("");
+            $("#aaliastxt").val("");
+        }
 
         function allowDrop(ev) {
             ev.preventDefault();
@@ -183,11 +303,9 @@
             var data = ev.dataTransfer.getData("pre");
             if ($(ev.target).hasClass("data")) {
                 ev.target.parentElement.appendChild(document.getElementById(data));
-            }
-            else if ($(ev.target).hasClass("card-body") || $(ev.target).hasClass("card-header")) {
+            } else if ($(ev.target).hasClass("card-body") || $(ev.target).hasClass("card-header")) {
                 $(ev.target).parent().find(".form-label-group").append(document.getElementById(data))
-            }
-            else {
+            } else {
                 ev.target.appendChild(document.getElementById(data));
             }
         }
