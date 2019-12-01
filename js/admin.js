@@ -21,8 +21,18 @@ $(document).ready(function() {
             $(row.find("img")[0]).click(function() {
                 $(this).parent().fadeOut()
             })
+            $(row.find("img")[1]).click(function() {
+                $(this).closest(".views").find("form").css("display","inline").insertAfter($(this).parent())
+            })
             return row;
         }
+
+        const editRow = (row,user) =>{
+            const alias = " <label class='inputlbl'>" + user.alias + "</label>";
+            const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' />"
+            row.html(user.username + "\t" + user.password + "\t" + alias + action);
+        }
+
         $.getJSON("data/user.json", (data) => {
             existingUsers.user = data.filter((v) => {
                 return (v.type == "user")
@@ -75,9 +85,13 @@ $(document).ready(function() {
         $("#nuserForm").css("display", "none");
         $("#nuserAddbtn").click(() => {
             $("#nuserForm").css("display", "inline");
+            $("#nuserForm").prependTo($(".card")[0]);
+            $("#nuserForm").before($(".card-header")[0])
         })
         $("#nuserclose").click(() => {
             $("#nuserForm").css("display", "none");
+            $("#nuserForm").prependTo($(".card")[0]);
+            $("#nuserForm").before($(".card-header")[0])
             nuserInputClear();
         })
         $("#nusersave").click(() => {
@@ -94,9 +108,13 @@ $(document).ready(function() {
         $("#operaForm").css("display", "none");
         $("#operaAddbtn").click(() => {
             $("#operaForm").css("display", "inline");
+            $("#operaForm").prependTo($(".card")[1]);
+            $("#operaForm").before($(".card-header")[1])
         })
-        $("#operaclose").click(() => {
+        $("#operaclose").click(function() {
             $("#operaForm").css("display", "none");
+            $("#operaForm").prependTo($(".card")[1]);
+            $("#operaForm").before($(".card-header")[1])
             operaInputClear();
         })
         $("#operasave").click(() => {
@@ -115,9 +133,13 @@ $(document).ready(function() {
         $("#adminForm").css("display", "none");
         $("#adminAddbtn").click(() => {
             $("#adminForm").css("display", "inline");
+            $("#adminForm").prependTo($(".card")[2]);
+            $("#adminForm").before($(".card-header")[2])
         })
         $("#adminclose").click(() => {
             $("#adminForm").css("display", "none");
+            $("#adminForm").prependTo($(".card")[2]);
+            $("#adminForm").before($(".card-header")[2])
             adminInputClear();
         })
         $("#adminsave").click(() => {
@@ -131,10 +153,6 @@ $(document).ready(function() {
             $("#nuserForm").css("display", "none");
             adminInputClear();
             $("#adminForm").css("display", "none");
-        })
-
-        $(".editbtn").click(() => {
-
         })
     }) //ready
 
