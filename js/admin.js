@@ -22,12 +22,15 @@ $(document).ready(function() {
                 $(this).parent().fadeOut()
             })
             $(row.find("img")[1]).click(function() {
-                $(this).closest(".views").find("form").css("display","inline").attr("edit","true").insertAfter($(this).parent())
+                $(this).closest(".views").find("form").css("display", "inline").attr("edit", "true").insertAfter($(this).parent())
+                $($(this).closest(".views").find("form input")[0]).val(row.text().split("\t")[0]);
+                $($(this).closest(".views").find("form input")[1]).val(row.text().split("\t")[1]);
+                $($(this).closest(".views").find("form input")[2]).val(row.text().split("\t")[2]);
             })
             return row;
         }
 
-        const editRow = (row,user) =>{
+        const editRow = (row, user) => {
             const alias = " <label class='inputlbl'>" + user.alias + "</label>";
             const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' />"
             row.html(user.username + "\t" + user.password + "\t" + alias + action);
@@ -35,7 +38,7 @@ $(document).ready(function() {
                 $(this).parent().fadeOut()
             })
             $(row.find("img")[1]).click(function() {
-                $(this).closest(".views").find("form").css("display","inline").attr("edit","true").insertAfter($(this).parent())
+                $(this).closest(".views").find("form").css("display", "inline").attr("edit", "true").insertAfter($(this).parent())
             })
         }
 
@@ -103,17 +106,16 @@ $(document).ready(function() {
         $("#nusersave").click(() => {
             const user = {
                 username: $("#nusernametxt").val(),
-                password:$("#npasswordtxt").val(),
-                alias:$("#naliastxt").val(),
+                password: $("#npasswordtxt").val(),
+                alias: $("#naliastxt").val(),
             };
-            if($("#nuserForm").attr("edit")){
+            if ($("#nuserForm").attr("edit")) {
                 const row = $("#nuserForm").closest("form").prev();
-                editRow(row,user);
-            }
-            else{
+                editRow(row, user);
+            } else {
                 $($(".card")[0]).find(".form-label-group").append(createRow(user));
             }
-            
+
             nuserInputClear();
             $("#nuserForm").css("display", "none");
         })
@@ -133,14 +135,13 @@ $(document).ready(function() {
         $("#operasave").click(() => {
             const user = {
                 username: $("#ousernametxt").val(),
-                password:$("#opasswordtxt").val(),
-                alias:$("#oaliastxt").val(),
+                password: $("#opasswordtxt").val(),
+                alias: $("#oaliastxt").val(),
             };
-            if($("#operaForm").attr("edit")){
+            if ($("#operaForm").attr("edit")) {
                 const row = $("#operaForm").closest("form").prev();
-                editRow(row,user);
-            }
-            else{
+                editRow(row, user);
+            } else {
                 $($(".card")[1]).find(".form-label-group").append(createRow(user));
             }
             nuserInputClear();
@@ -161,17 +162,16 @@ $(document).ready(function() {
             $("#adminForm").before($(".card-header")[2])
             adminInputClear();
         })
-        $("#adminsave").click(function(){
+        $("#adminsave").click(function() {
             const user = {
                 username: $("#ausernametxt").val(),
-                password:$("#apasswordtxt").val(),
-                alias:$("#aaliastxt").val(),
+                password: $("#apasswordtxt").val(),
+                alias: $("#aaliastxt").val(),
             };
-            if($(this).closest("form").attr("edit")){
+            if ($(this).closest("form").attr("edit")) {
                 const row = $(this).closest("form").prev();
-                editRow(row,user);
-            }
-            else{
+                editRow(row, user);
+            } else {
                 $($(".card")[2]).find(".form-label-group").append(createRow(user));
             }
             nuserInputClear();
