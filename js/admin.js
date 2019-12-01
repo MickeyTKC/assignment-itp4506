@@ -22,7 +22,7 @@ $(document).ready(function() {
                 $(this).parent().fadeOut()
             })
             $(row.find("img")[1]).click(function() {
-                $(this).closest(".views").find("form").css("display","inline").insertAfter($(this).parent())
+                $(this).closest(".views").find("form").css("display","inline").attr("edit","true").insertAfter($(this).parent())
             })
             return row;
         }
@@ -31,6 +31,12 @@ $(document).ready(function() {
             const alias = " <label class='inputlbl'>" + user.alias + "</label>";
             const action = "<img src='image/del24px.png' class='databtn' /><img src='image/edit24px.png' class='databtn editbtn' />"
             row.html(user.username + "\t" + user.password + "\t" + alias + action);
+            $(row.find("img")[0]).click(function() {
+                $(this).parent().fadeOut()
+            })
+            $(row.find("img")[1]).click(function() {
+                $(this).closest(".views").find("form").css("display","inline").attr("edit","true").insertAfter($(this).parent())
+            })
         }
 
         $.getJSON("data/user.json", (data) => {
@@ -100,7 +106,14 @@ $(document).ready(function() {
                 password:$("#npasswordtxt").val(),
                 alias:$("#naliastxt").val(),
             };
-            $($(".card")[0]).find(".form-label-group").append(createRow(user));
+            if($("#nuserForm").attr("edit")){
+                const row = $("#nuserForm").closest("form").prev();
+                editRow(row,user);
+            }
+            else{
+                $($(".card")[0]).find(".form-label-group").append(createRow(user));
+            }
+            
             nuserInputClear();
             $("#nuserForm").css("display", "none");
         })
@@ -123,7 +136,13 @@ $(document).ready(function() {
                 password:$("#opasswordtxt").val(),
                 alias:$("#oaliastxt").val(),
             };
-            $($(".card")[1]).find(".form-label-group").append(createRow(user));
+            if($("#operaForm").attr("edit")){
+                const row = $("#operaForm").closest("form").prev();
+                editRow(row,user);
+            }
+            else{
+                $($(".card")[1]).find(".form-label-group").append(createRow(user));
+            }
             nuserInputClear();
             $("#nuserForm").css("display", "none");
             operaInputClear();
@@ -142,13 +161,19 @@ $(document).ready(function() {
             $("#adminForm").before($(".card-header")[2])
             adminInputClear();
         })
-        $("#adminsave").click(() => {
+        $("#adminsave").click(function(){
             const user = {
                 username: $("#ausernametxt").val(),
                 password:$("#apasswordtxt").val(),
                 alias:$("#aaliastxt").val(),
             };
-            $($(".card")[2]).find(".form-label-group").append(createRow(user));
+            if($(this).closest("form").attr("edit")){
+                const row = $(this).closest("form").prev();
+                editRow(row,user);
+            }
+            else{
+                $($(".card")[2]).find(".form-label-group").append(createRow(user));
+            }
             nuserInputClear();
             $("#nuserForm").css("display", "none");
             adminInputClear();
