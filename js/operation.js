@@ -16,7 +16,7 @@ $(document).ready(function() {
                         "</td><td>" + data[i].menu[j].takeaway +
                         "</td><td>" + data[i].menu[j].date.start +
                         "</td><td>" + data[i].menu[j].date.end +
-                        "</td><td><button class='hidebtn'><strong>-</strong></button>&nbsp;<button class='chgbtn'><strong>+</strong></button>&nbsp;<button class='delbtn'><strong>x</strong></button></td></tr>");
+                        "</td><td><button title='Hide' class='hidebtn'><strong>-</strong></button>&nbsp;<button title='Edit' class='chgbtn'><strong>+</strong></button>&nbsp;<button title='Delete' class='delbtn'><strong>x</strong></button></td></tr>");
                 }
                 break;
             }

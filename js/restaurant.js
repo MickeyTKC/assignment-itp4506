@@ -36,3 +36,8 @@ $("#reset").click(function() {
     $("#addReview").css("display", "none");
     $("textarea").val("");
 });
+
+$("#submitOrder").click(() => {
+    $(".thankYouForOrder").fadeIn()
+    setTimeout(() => { $(".thankYouForOrder").fadeOut() }, 7000)
+})

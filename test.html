@@ -28,7 +28,25 @@
         <div id="header"></div>
         <!-- Page Features -->
         <div class="row text-center">
-            
+            <div class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Modal body text goes here.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -41,19 +59,19 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script>
         $("#header").load("components/header.html");
-        let menu ;
+        let menu;
         let title;
         let items;
-        $(document).ready(function () {
+        $(document).ready(function() {
             render.site.load();
             const id = "1001";
-            $.getJSON("data/restaurant.json",function(data){
+            $.getJSON("data/restaurant.json", function(data) {
                 const table = render.table.create.el();
-                menu = data.filter(v=>(v.id==id))[0].menu;
+                menu = data.filter(v => (v.id == id))[0].menu;
                 title = Object.keys(menu[0]);
-                items = menu.map(v=>Object.values(v));
-                render.table.set.title(table,title);
-                render.table.set.content(table,items);
+                items = menu.map(v => Object.values(v));
+                render.table.set.title(table, title);
+                render.table.set.content(table, items);
                 $(".row").append(table);
             })
         })

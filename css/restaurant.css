@@ -66,3 +66,33 @@
 tr:hover {
     background-color: #FAE5D3;
 }
+
+#takeawayFormDiv {
+    border-radius: 10px;
+    box-shadow: 2px 2px #FDF2E9;
+    border: 1px solid #FAE5D3;
+}
+
+#takeawayFormDiv:hover {
+    box-shadow: 4px 4px #F6DDCC;
+    border: 1px solid #EDBB99;
+}
+
+#takeawayFormDiv h6,
+#inside {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#order {
+    text-align: right;
+}
+
+.thankYouForOrder {
+    color: red;
+    font-family: monospace;
+    font-size: 24px;
+    display: none;
+    position: absolute;
+}

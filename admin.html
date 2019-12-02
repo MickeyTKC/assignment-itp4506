@@ -63,7 +63,7 @@
                                     <input type="text" id="naliastxt" placeholder="Alias" />
                                 </div>
                                 <div style="float: right;">
-                                    <input class="btn btn-outline-success" id="nusersave" type="button" value="Save">
+                                    <input class="btn btn-outline-success" id="nusersave" type="button" value="Save" data-toggle="modal" data-target="#modelId">
                                     <input class="btn btn-outline-danger" id="nuserclose" type="reset" value="Close">
                                 </div>
                             </div>
@@ -92,7 +92,7 @@
                                     <input type="text" id="oaliastxt" placeholder="Alias" />
                                 </div>
                                 <div style="float: right;">
-                                    <input class="btn btn-outline-success" id="operasave" type="button" value="Save">
+                                    <input class="btn btn-outline-success" id="operasave" type="button" value="Save" data-toggle="modal" data-target="#modelId">
                                     <input class="btn btn-outline-danger" id="operaclose" type="reset" value="Close">
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                     <input type="text" id="aaliastxt" placeholder="Alias" />
                                 </div>
                                 <div style="float: right;">
-                                    <input class="btn btn-outline-success" id="adminsave" type="button" value="Save">
+                                    <input class="btn btn-outline-success" id="adminsave" type="button" value="Save" data-toggle="modal" data-target="#modelId">
                                     <input class="btn btn-outline-danger" id="adminclose" type="reset" value="Close">
                                 </div>
                             </div>
@@ -134,7 +134,28 @@
                 </div>
                 <div id="action" style="position: fixed;bottom:2em;right:2em;">
                     <div id="btn-reset" class="btn btn-danger">Reset</div>
-                    <div id="btn-save" class="btn btn-primary">Save</div>
+                    <div id="btn-save" class="btn btn-primary" data-toggle="modal" data-target="#modelId">Save</div>
+                </div>
+                <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Alert !</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    Are you sure about that change?
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,7 +171,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script src="js/admin.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

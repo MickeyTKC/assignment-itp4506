@@ -39,6 +39,9 @@ $(document).ready(function() {
             })
             $(row.find("img")[1]).click(function() {
                 $(this).closest(".views").find("form").css("display", "inline").attr("edit", "true").insertAfter($(this).parent())
+                $($(this).closest(".views").find("form input")[0]).val(row.text().split("\t")[0]);
+                $($(this).closest(".views").find("form input")[1]).val(row.text().split("\t")[1]);
+                $($(this).closest(".views").find("form input")[2]).val(row.text().split("\t")[2]);
             })
         }
 
